@@ -4,26 +4,10 @@ import { Input } from "@/ui/input";
 import { SearchIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { useFilterRestaurants } from "../hooks";
 
 export function InputSearchRestaurant() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [search, setSearch] = useState(searchParams.get("q") || "");
-
-  useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      const params = new URLSearchParams(searchParams.toString());
-      if (search) {
-        params.set("q", search);
-      } else {
-        params.delete("q");
-      }
-      router.push(`?${params.toString()}`);
-    }, 300);
-
-    return () => clearTimeout(delayDebounce);
-  }, [search]);
-
+  const { search, setSearch } = useFilterRestaurants();
   return (
     <div className="flex flex-col max-w-96 w-full relative">
       <SearchIcon

@@ -1,3 +1,4 @@
+import { get } from "http";
 export interface RestaurantEntity {
   id: string;
   name: string;
@@ -8,4 +9,5 @@ export interface RestaurantEntity {
 
 export interface RestaurantRepository {
   getAll(): Promise<RestaurantEntity[]>;
+  getByName(name: string, restaurants: RestaurantEntity[]): RestaurantEntity[];
 }

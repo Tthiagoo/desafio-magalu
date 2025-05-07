@@ -20,6 +20,12 @@ const mockRestaurants: RestaurantEntity[] = [
   },
 ];
 
+jest.mock("next/navigation", () => ({
+  useSearchParams: () => ({
+    get: () => "", // ou o valor que quiser testar
+  }),
+}));
+
 describe("ListRestaurant", () => {
   it("should render restaurants", () => {
     render(<ListRestaurant restaurants={mockRestaurants} />);

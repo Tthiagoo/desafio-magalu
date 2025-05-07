@@ -12,6 +12,7 @@ import React from "react";
 import ItemRestaurant from "./item-restaurant";
 import { RestaurantEntity } from "../domain";
 import { useSearchParams } from "next/navigation";
+import { RestaurantService } from "../service";
 
 export interface IProps {
   restaurants: RestaurantEntity[];
@@ -21,9 +22,8 @@ export default function ListRestaurant({ restaurants }: IProps) {
   const searchParams = useSearchParams();
   const query = searchParams.get("q")?.toLowerCase() || "";
 
-  const filteredRestaurants = restaurants.filter((restaurant) =>
-    restaurant.name.toLowerCase().includes(query)
-  );
+  const { getByName } = RestaurantService();
+  const filteredRestaurantsByName = getByName(query, restaurants);
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function ListRestaurant({ restaurants }: IProps) {
         abertos
       </strong>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-        {filteredRestaurants.map((restaurant, index) => (
+        {filteredRestaurantsByName.map((restaurant, index) => (
           <ItemRestaurant key={index} {...restaurant} />
         ))}
       </div>

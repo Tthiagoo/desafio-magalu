@@ -1,11 +1,12 @@
 import ListRestaurant from "@/modules/search-restaurants/components/list-restaurant";
-import { restaurantUseCase } from "@/modules/search-restaurants/useCase";
+import { RestaurantService } from "@/modules/search-restaurants/service";
+
 import { Button } from "@/ui/button";
 import Image from "next/image";
 
 export default async function Home() {
-  const restaurants = await restaurantUseCase.getAllRestaurants();
-
+  const { getAll } = RestaurantService(fetch);
+  const restaurants = await getAll();
   return (
     <main className="flex flex-col items-center">
       <Image
