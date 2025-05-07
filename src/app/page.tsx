@@ -18,9 +18,6 @@ export default async function Home() {
       />
 
       <section className="flex flex-col mt-3  overflow-y-auto items-start w-full max-w-4xl gap-4 pt-6 px-4  h-[calc(100vh-280px)] sm:h-[calc(100vh-300px)]">
-        <strong className="text-xl sm:text-3xl font-bold text-primary">
-          abertos
-        </strong>
         <ListRestaurant restaurants={restaurants} />
       </section>
     </main>
