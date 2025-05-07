@@ -57,7 +57,9 @@ export function Header() {
           <MapPin className="cursor-pointer sm:scale-125" />
           <div className="flex flex-col items-start justify-center">
             <span className="text-base sm:text-lg">entregando em</span>
-            <span className="text-base sm:text-lg font-bold flex flex-row items-center gap-1">
+            <span
+              className={`text-base sm:text-lg font-bold flex flex-row items-center gap-1`}
+            >
               {address} <ChevronRight className="sm:scale-125" />
             </span>
           </div>
