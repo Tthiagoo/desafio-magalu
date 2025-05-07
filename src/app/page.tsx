@@ -1,11 +1,10 @@
 import ListRestaurant from "@/modules/search-restaurants/components/list-restaurant";
+import { restaurantUseCase } from "@/modules/search-restaurants/useCase";
 import { Button } from "@/ui/button";
 import Image from "next/image";
 
 export default async function Home() {
-  const response = await fetch("http://localhost:3001/restaurants");
-  const restaurants = await response.json();
-  console.log(restaurants);
+  const restaurants = await restaurantUseCase.getAllRestaurants();
 
   return (
     <main className="flex flex-col items-center">

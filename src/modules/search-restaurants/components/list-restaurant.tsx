@@ -9,16 +9,10 @@ import {
 import React from "react";
 import Image from "next/image";
 import ItemRestaurant from "./item-restaurant";
+import { RestaurantEntity } from "../domain";
 
-export interface IRestaurant {
-  id: number;
-  name: string;
-  image: string;
-  deliveryFee: number;
-  rating: number;
-}
 export interface IProps {
-  restaurants: IRestaurant[];
+  restaurants: RestaurantEntity[];
 }
 
 export default function ListRestaurant({ restaurants }: IProps) {

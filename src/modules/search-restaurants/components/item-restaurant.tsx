@@ -2,14 +2,15 @@ import { Card } from "@/ui/card";
 import React from "react";
 import Image from "next/image";
 import { Bike } from "lucide-react";
-import { IProps, IRestaurant } from "./list-restaurant";
+import { IProps } from "./list-restaurant";
+import { RestaurantEntity } from "../domain";
 export default function ItemRestaurant({
   id,
   name,
   image,
   deliveryFee,
   rating,
-}: IRestaurant) {
+}: RestaurantEntity) {
   return (
     <Card className="flex flex-row gap-3 bg-neutral-100 p-0 rounded-lg h-full">
       <Image src={image} alt={name} width={72} height={72} />
