@@ -4,11 +4,15 @@ import React from "react";
 
 export function InputSearchRestaurant() {
   return (
-    <div className="flex flex-col w-full relative">
+    <div className="flex flex-col max-w-96 w-full relative">
       {/* Added relative positioning to the parent div */}
-      <SearchIcon color="gray" size={20} className=" absolute top-6 left-2" />
+      <SearchIcon
+        color="gray"
+        size={20}
+        className=" absolute top-6 sm:top-7 sm:scale-125 left-2"
+      />
       <Input
-        className="mt-4 h-10 pl-8 pt-4 pb-4"
+        className="mt-4 h-10 sm:h-12 pl-8 sm:pl-10 sm:text-lg  pt-4 pb-4"
         placeholder="busque pela loja ou culinária"
         type="text"
       />
