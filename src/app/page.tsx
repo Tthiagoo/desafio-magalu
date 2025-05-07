@@ -2,7 +2,11 @@ import ListRestaurant from "@/modules/search-restaurants/components/list-restaur
 import { Button } from "@/ui/button";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch("http://localhost:3001/restaurants");
+  const restaurants = await response.json();
+  console.log(restaurants);
+
   return (
     <main className="flex flex-col items-center">
       <Image
@@ -12,14 +16,13 @@ export default function Home() {
         height={0}
         className="max-h-[130px] mt-[2px] object-contain  w-full "
         sizes="100%"
-        quality={100}
       />
 
       <section className="flex flex-col  overflow-y-auto items-start w-full max-w-3xl gap-4 pt-6 px-4  h-[calc(100vh-270px)] sm:h-[calc(100vh-300px)]">
         <strong className="text-xl sm:text-3xl font-bold text-primary">
           abertos
         </strong>
-        <ListRestaurant />
+        <ListRestaurant restaurants={restaurants} />
       </section>
     </main>
   );

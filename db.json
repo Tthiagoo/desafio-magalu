@@ -1,0 +1,129 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Matsuri Concept",
+      "image": "/images-restaurants/matsuri.png",
+      "deliveryFee": 4.99,
+      "deliveryTime": "30-40 min",
+      "distance": "5.2km",
+      "rating": 4.5,
+      "minOrder": 15,
+      "freeShippingAbove": 35,
+      "closingHour": "20:00",
+      "tags": ["japonês", "sushi"]
+    },
+    {
+      "id": 2,
+      "name": "Subway - Avenida center",
+      "image": "/images-restaurants/subway.png",
+      "deliveryFee": 6.0,
+      "rating": 4.7
+    },
+    {
+      "id": 3,
+      "name": "Burger King - Colombo",
+      "image": "/images-restaurants/burger-king.png",
+      "deliveryFee": 6.0,
+      "rating": 4.7
+    },
+    {
+      "id": 4,
+      "name": "McDonald’s - Novo Centro",
+      "image": "/images-restaurants/mcdonalds.png",
+      "deliveryFee": 0,
+      "rating": 4.7
+    },
+    {
+      "id": 5,
+      "name": "China in Box",
+      "image": "/images-restaurants/china-in-box.png",
+      "deliveryFee": 0,
+      "rating": 4.7
+    }
+  ],
+
+  "products": [
+    {
+      "id": 101,
+      "restaurantId": 1,
+      "category": "Temakis",
+      "title": "Califórnia",
+      "description": "Kani, pepino e maçã ou manga",
+      "priceOriginal": 17.0,
+      "priceDiscounted": 13.99,
+      "isVegetarian": false
+    },
+    {
+      "id": 102,
+      "restaurantId": 1,
+      "category": "Temakis",
+      "title": "Filadélfia",
+      "description": "Arroz, salmão fresco, cream cheese e cebolinha",
+      "priceDiscounted": 13.99
+    },
+    {
+      "id": 103,
+      "restaurantId": 1,
+      "category": "Temakis",
+      "title": "Mix",
+      "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese, maion...",
+      "priceDiscounted": 13.99,
+      "isCustomizable": true
+    },
+    {
+      "id": 104,
+      "restaurantId": 1,
+      "category": "Ceviches",
+      "title": "Ceviche de salmão",
+      "description": "salmão temperado com limão, cebola e pimenta",
+      "priceFrom": 19.9,
+      "customizations": [201, 202, 203]
+    }
+  ],
+
+  "customizations": [
+    {
+      "id": 201,
+      "title": "qual o tamanho?",
+      "type": "single",
+      "required": true,
+      "options": [
+        {
+          "label": "médio",
+          "price": 19.9
+        },
+        {
+          "label": "grande",
+          "price": 28.9
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "title": "acompanhamentos",
+      "type": "multi",
+      "required": true,
+      "min": 1,
+      "max": 2,
+      "options": [
+        { "label": "shoyu" },
+        { "label": "gengibre" },
+        { "label": "wasabi" },
+        { "label": "sem acompanhamentos" }
+      ]
+    },
+    {
+      "id": 203,
+      "title": "vai querer bebida?",
+      "type": "quantity",
+      "options": [
+        { "label": "coca-cola", "price": 5.0 },
+        { "label": "fanta laranja", "price": 5.0 },
+        { "label": "guaraná antarctica", "price": 5.0 },
+        { "label": "suco prats laranja", "price": 6.0 },
+        { "label": "água sem gás", "price": 3.0 }
+      ]
+    }
+  ]
+}
