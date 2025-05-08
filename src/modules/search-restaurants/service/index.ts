@@ -5,7 +5,7 @@ export function RestaurantService(
 ): RestaurantRepository {
   const service: RestaurantRepository = {
     async getAll(): Promise<RestaurantEntity[]> {
-      const response = await fetchFn!("http://localhost:3001/restaurants");
+      const response = await fetchFn!("http://localhost:3000/api/restaurants");
       return await response.json();
     },
     getByName(

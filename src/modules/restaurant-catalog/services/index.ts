@@ -6,21 +6,18 @@ export function CatalogService(
 ): RestaurantCatalogRepository {
   const service: RestaurantCatalogRepository = {
     async getCatalogById(id: string): Promise<ProductEntity[]> {
-      const response = await fetchFn!("http://localhost:3001/products");
-      const products: ProductEntity[] = await response.json();
-      console.log(products);
-      const productsFiltered = products.filter(
-        (product) => product.idRestaurant === id
+      const response = await fetchFn!(
+        `http://localhost:3000/api/restaurant-catalog?id=${id}`
       );
-      return await productsFiltered;
+
+      return await response.json();
     },
     async getRestaurantInfo(idRestaurant: string): Promise<RestaurantEntity> {
-      const response = await fetchFn!("http://localhost:3001/restaurants");
-      const restaurantInfo: RestaurantEntity[] = await response.json();
-      const restaurantFiltered = restaurantInfo.find(
-        (restaurant) => restaurant.id === idRestaurant
+      const response = await fetchFn!(
+        `http://localhost:3000/api/restaurant-detail?id=${idRestaurant}`
       );
-      return await restaurantFiltered!;
+
+      return await await response.json();
     },
   };
   return service;

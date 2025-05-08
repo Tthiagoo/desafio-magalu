@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1",
+    "idRestaurant": "1",
+    "name": "Temaki",
+    "description": "bolinho de arroz com pele de peixe",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Califórnia",
+        "description": "Kani, pepino e maçã ou manga",
+        "price": 13.99,
+        "oldPrice": 17.0,
+        "promo": true
+      },
+      {
+        "id": "2",
+        " name": "Mix",
+        "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
+        "price": 13.99,
+        "promo": false,
+        "from": true
+      },
+      {
+        "id": "3",
+        "name": "Filadélfia",
+        "description": "Arroz, salmão fresco, cream cheese e cebolinha",
+        "price": 13.99,
+        "promo": false
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "idRestaurant": "1",
+    "name": "Niguiri",
+    "description": "bolinho de arroz com pele de peixe",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Califórnia",
+        "description": "Kani, pepino e maçã ou manga",
+        "price": 13.99,
+        "oldPrice": 17.0,
+        "promo": true
+      },
+      {
+        "id": "2",
+        "name": "Mix",
+        "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
+        "price": 13.99,
+        "promo": false,
+        "from": true
+      },
+      {
+        "id": "3",
+        "name": "Filadélfia",
+        "description": "Arroz, salmão fresco, cream cheese e cebolinha",
+        "price": 13.99,
+        "promo": false
+      }
+    ]
+  }
+]
