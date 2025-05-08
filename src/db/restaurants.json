@@ -14,7 +14,7 @@
     "tags": ["japonês", "sushi"]
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Subway - Avenida center",
     "image": "/images-restaurants/subway.png",
     "deliveryFee": 6.0,

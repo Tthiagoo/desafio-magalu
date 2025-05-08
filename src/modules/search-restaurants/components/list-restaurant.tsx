@@ -1,13 +1,5 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/ui/card";
 import React from "react";
 import ItemRestaurant from "./item-restaurant";
 import { RestaurantEntity } from "../domain";

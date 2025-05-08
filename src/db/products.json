@@ -60,5 +60,67 @@
         "promo": false
       }
     ]
+  },
+  {
+    "id": "3",
+    "idRestaurant": "2",
+    "name": "Sanduiches",
+    "description": "Escolha seu sanduiche e montamos pra você",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Frango",
+        "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Frango Grelhado",
+        "price": 13.99,
+        "oldPrice": 17.0,
+        "promo": true
+      },
+      {
+        "id": "2",
+        "name": "Frango Defumado",
+        "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Frango Defumado com Cream Cheese.",
+        "price": 13.99,
+        "promo": false,
+        "from": true
+      },
+      {
+        "id": "3",
+        "name": "Steak Churrasco",
+        "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Steak de Churrasco, cheio de suculência e sabor",
+        "price": 13.99,
+        "promo": false
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "idRestaurant": "2",
+    "name": "Bebidas",
+    "description": "Escolha seu sanduiche e montamos pra você",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Agua",
+        "description": "",
+        "price": 13.99,
+        "oldPrice": 17.0,
+        "promo": true
+      },
+      {
+        "id": "2",
+        "name": "Refrigerante",
+        "description": "",
+        "price": 13.99,
+        "promo": false,
+        "from": true
+      },
+      {
+        "id": "3",
+        "name": "Suco",
+        "description": "",
+        "price": 13.99,
+        "promo": false
+      }
+    ]
   }
 ]
