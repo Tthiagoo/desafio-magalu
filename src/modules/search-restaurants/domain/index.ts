@@ -1,10 +1,15 @@
-import { get } from "http";
 export interface RestaurantEntity {
   id: string;
   name: string;
   image: string;
   deliveryFee: number;
   rating: number;
+  minOrder: number;
+  freeShippingAbove: number;
+  deliveryTime: string;
+  closingHour: string;
+  freeMinimunDelivery: string;
+  distance: string;
 }
 
 export interface RestaurantRepository {

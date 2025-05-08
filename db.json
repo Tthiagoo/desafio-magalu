@@ -1,10 +1,10 @@
 {
   "restaurants": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Matsuri Concept",
       "image": "/images-restaurants/matsuri.png",
-      "deliveryFee": 4.99,
+      "deliveryFee": 5,
       "deliveryTime": "30-40 min",
       "distance": "5.2km",
       "rating": 4.5,
@@ -150,40 +150,66 @@
 
   "products": [
     {
-      "id": 101,
-      "restaurantId": 1,
-      "category": "Temakis",
-      "title": "Califórnia",
-      "description": "Kani, pepino e maçã ou manga",
-      "priceOriginal": 17.0,
-      "priceDiscounted": 13.99,
-      "isVegetarian": false
+      "id": "1",
+      "idRestaurant": "1",
+      "name": "Temaki",
+      "description": "bolinho de arroz com pele de peixe",
+      "variants": [
+        {
+          "id": "1",
+          "name": "Califórnia",
+          "description": "Kani, pepino e maçã ou manga",
+          "price": 13.99,
+          "oldPrice": 17.0,
+          "promo": true
+        },
+        {
+          "id": "2",
+          " name": "Mix",
+          "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
+          "price": 13.99,
+          "promo": false,
+          "from": true
+        },
+        {
+          "id": "3",
+          "name": "Filadélfia",
+          "description": "Arroz, salmão fresco, cream cheese e cebolinha",
+          "price": 13.99,
+          "promo": false
+        }
+      ]
     },
     {
-      "id": 102,
-      "restaurantId": 1,
-      "category": "Temakis",
-      "title": "Filadélfia",
-      "description": "Arroz, salmão fresco, cream cheese e cebolinha",
-      "priceDiscounted": 13.99
-    },
-    {
-      "id": 103,
-      "restaurantId": 1,
-      "category": "Temakis",
-      "title": "Mix",
-      "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese, maion...",
-      "priceDiscounted": 13.99,
-      "isCustomizable": true
-    },
-    {
-      "id": 104,
-      "restaurantId": 1,
-      "category": "Ceviches",
-      "title": "Ceviche de salmão",
-      "description": "salmão temperado com limão, cebola e pimenta",
-      "priceFrom": 19.9,
-      "customizations": [201, 202, 203]
+      "id": "2",
+      "idRestaurant": "1",
+      "name": "Niguiri",
+      "description": "bolinho de arroz com pele de peixe",
+      "variants": [
+        {
+          "id": "1",
+          "name": "Califórnia",
+          "description": "Kani, pepino e maçã ou manga",
+          "price": 13.99,
+          "oldPrice": 17.0,
+          "promo": true
+        },
+        {
+          "id": "2",
+          "name": "Mix",
+          "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
+          "price": 13.99,
+          "promo": false,
+          "from": true
+        },
+        {
+          "id": "3",
+          "name": "Filadélfia",
+          "description": "Arroz, salmão fresco, cream cheese e cebolinha",
+          "price": 13.99,
+          "promo": false
+        }
+      ]
     }
   ],
 

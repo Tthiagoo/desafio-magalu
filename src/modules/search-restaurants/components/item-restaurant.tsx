@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Bike } from "lucide-react";
 import { IProps } from "./list-restaurant";
 import { RestaurantEntity } from "../domain";
+import { useRouter } from "next/navigation";
 export default function ItemRestaurant({
   id,
   name,
@@ -11,8 +12,12 @@ export default function ItemRestaurant({
   deliveryFee,
   rating,
 }: RestaurantEntity) {
+  const router = useRouter();
   return (
-    <Card className="flex flex-row gap-3 bg-neutral-100 p-0 rounded-lg h-full">
+    <Card
+      onClick={() => router.push(`restaurant/${id}`)}
+      className="flex flex-row gap-3 bg-neutral-100 p-0 rounded-lg h-full"
+    >
       <Image src={image} alt={name} width={72} height={72} />
       <div className="flex flex-col gap-1 justify-center">
         <h2 className="text-base font-bold text-neutral-700">{name}</h2>
