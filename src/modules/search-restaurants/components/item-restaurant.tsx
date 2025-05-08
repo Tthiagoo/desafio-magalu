@@ -5,6 +5,7 @@ import { Bike } from "lucide-react";
 import { IProps } from "./list-restaurant";
 import { RestaurantEntity } from "../domain";
 import { useRouter } from "next/navigation";
+import { formatMoney } from "@/lib/utils";
 export default function ItemRestaurant({
   id,
   name,
@@ -34,10 +35,10 @@ export default function ItemRestaurant({
                 width={16}
                 height={16}
                 alt="icone delivery"
-                src="/icons/delivery.svg"
+                src="/icons/notfree.svg"
               />
             )}
-            {deliveryFee === 0 ? "gratis" : `R$${deliveryFee}`}
+            {formatMoney(deliveryFee)}
           </span>
           <span className="text-sm text-neutral-500 font-bold">
             ⭐ {rating}

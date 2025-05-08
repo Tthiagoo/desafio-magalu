@@ -17,6 +17,20 @@ export function RestaurantService(
       );
       return restaurantes;
     },
+    getByOpenStatus(restaurants: RestaurantEntity[]): {
+      openRestaurantes: RestaurantEntity[];
+      closedRestaurantes: RestaurantEntity[];
+    } {
+      console.log("chegou aqui");
+      console.log(restaurants);
+      const openRestaurantes = restaurants.filter(
+        (restaurant) => restaurant.open == true
+      );
+      const closedRestaurantes = restaurants.filter(
+        (restaurant) => restaurant.open == false
+      );
+      return { openRestaurantes, closedRestaurantes };
+    },
   };
   return service;
 }

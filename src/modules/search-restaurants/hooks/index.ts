@@ -24,3 +24,5 @@ export function useFilterRestaurants() {
   }, [search]);
   return { search, setSearch };
 }
+
+export function useFilterOpenRestaurants() {}

@@ -10,6 +10,7 @@
     "minOrder": 15,
     "freeShippingAbove": 35,
     "closingHour": "20:00",
+    "open": true,
     "tags": ["japonês", "sushi"]
   },
   {
@@ -17,132 +18,83 @@
     "name": "Subway - Avenida center",
     "image": "/images-restaurants/subway.png",
     "deliveryFee": 6.0,
-    "rating": 4.7
+    "rating": 4.7,
+    "minOrder": 15,
+    "freeShippingAbove": 35,
+    "closingHour": "20:00",
+    "deliveryTime": "30-40 min",
+    "distance": "5.2km",
+    "open": true,
+    "tags": ["japonês", "sushi"]
   },
   {
     "id": 3,
     "name": "Burger King - Colombo",
     "image": "/images-restaurants/burger-king.png",
     "deliveryFee": 6.0,
-    "rating": 4.7
+    "rating": 4.7,
+    "minOrder": 15,
+    "freeShippingAbove": 35,
+    "closingHour": "20:00",
+    "deliveryTime": "30-40 min",
+    "distance": "5.2km",
+    "open": true,
+    "tags": ["japonês", "sushi"]
   },
   {
     "id": 4,
     "name": "McDonald’s - Novo Centro",
     "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
+    "deliveryFee": 6.0,
+    "rating": 4.7,
+    "minOrder": 15,
+    "freeShippingAbove": 35,
+    "closingHour": "20:00",
+    "deliveryTime": "30-40 min",
+    "distance": "5.2km",
+    "open": true,
+    "tags": ["japonês", "sushi"]
   },
   {
     "id": 5,
-    "name": "China in Box",
-    "image": "/images-restaurants/china-in-box.png",
+    "name": "Pizza hut",
+    "image": "/images-restaurants/pizza-hut.png",
     "deliveryFee": 0,
-    "rating": 4.7
+    "rating": 4.0,
+    "minOrder": 20,
+    "freeShippingAbove": 45,
+    "closingHour": "30:00",
+    "deliveryTime": "30-40 min",
+    "distance": "5.2km",
+    "open": true,
+    "tags": ["japonês", "sushi"]
   },
   {
     "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
+    "name": "Domino's Pizza",
+    "image": "/images-restaurants/dominos.png",
     "deliveryFee": 0,
-    "rating": 4.7
+    "rating": 4.0,
+    "minOrder": 20,
+    "freeShippingAbove": 45,
+    "closingHour": "30:00",
+    "deliveryTime": "30-40 min",
+    "distance": "5.2km",
+    "open": false,
+    "tags": ["japonês", "sushi"]
   },
   {
     "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
+    "name": "Domino's Pizza",
+    "image": "/images-restaurants/dominos.png",
     "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 4,
-    "name": "McDonald’s - Novo Centro",
-    "image": "/images-restaurants/mcdonalds.png",
-    "deliveryFee": 0,
-    "rating": 4.7
-  },
-  {
-    "id": 5,
-    "name": "China in Box",
-    "image": "/images-restaurants/china-in-box.png",
-    "deliveryFee": 0,
-    "rating": 4.7
+    "rating": 4.0,
+    "minOrder": 20,
+    "freeShippingAbove": 45,
+    "closingHour": "30:00",
+    "deliveryTime": "30-40 min",
+    "distance": "5.2km",
+    "open": false,
+    "tags": ["japonês", "sushi"]
   }
 ]
