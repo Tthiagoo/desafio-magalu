@@ -1,44 +1,60 @@
 [
   {
-    "id": 201,
-    "title": "qual o tamanho?",
-    "type": "single",
-    "required": true,
-    "options": [
+    "id": "1",
+    "productId": "1",
+    "name": "Cheviche de frango",
+    "image": "/prato1.png",
+    "inicialPrice": 30,
+    "description": "frango",
+    "customization": [
       {
-        "label": "médio",
-        "price": 19.9
+        "id": "201",
+        "title": "qual o tamanho?",
+        "description": "escolhe um",
+        "type": "single",
+        "required": true,
+        "options": [
+          {
+            "label": "médio",
+            "price": 19.9,
+            "hasPromotion": true,
+            "oldPrice": 17.5,
+            "id": "tamanho_1"
+          },
+          {
+            "label": "grande",
+            "price": 28.9,
+            "id": "tamanho_2"
+          }
+        ]
       },
       {
-        "label": "grande",
-        "price": 28.9
+        "id": "202",
+        "title": "acompanhamentos",
+        "description": "escolhe um",
+        "type": "multi",
+        "required": true,
+        "min": 1,
+        "max": 2,
+        "options": [
+          { "label": "shoyu", "price": 0, "id": "acomp_1" },
+          { "label": "gengibre", "price": 0, "id": "acomp_2" },
+          { "label": "wasabi", "price": 0, "id": "acomp_3" },
+          { "label": "sem acompanhamentos", "price": 0, "id": "acomp_4" }
+        ]
+      },
+      {
+        "id": "203",
+        "title": "vai querer bebida?",
+        "type": "quantity",
+        "options": [
+          { "label": "coca-cola", "price": 5.0, "id": "bebida_1" },
+          { "label": "fanta laranja", "price": 5.0, "id": "bebida_2" },
+          { "label": "guaraná antarctica", "price": 5.0, "id": "bebida_3" },
+          { "label": "suco prats laranja", "price": 6.0, "id": "bebida_4" },
+          { "label": "água sem gás", "price": 3.0, "id": "bebida_5" }
+        ]
       }
-    ]
-  },
-  {
-    "id": 202,
-    "title": "acompanhamentos",
-    "type": "multi",
-    "required": true,
-    "min": 1,
-    "max": 2,
-    "options": [
-      { "label": "shoyu" },
-      { "label": "gengibre" },
-      { "label": "wasabi" },
-      { "label": "sem acompanhamentos" }
-    ]
-  },
-  {
-    "id": 203,
-    "title": "vai querer bebida?",
-    "type": "quantity",
-    "options": [
-      { "label": "coca-cola", "price": 5.0 },
-      { "label": "fanta laranja", "price": 5.0 },
-      { "label": "guaraná antarctica", "price": 5.0 },
-      { "label": "suco prats laranja", "price": 6.0 },
-      { "label": "água sem gás", "price": 3.0 }
     ]
   }
 ]

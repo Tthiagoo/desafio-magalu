@@ -7,14 +7,17 @@ import {
 import { Badge } from "@/ui/badge";
 import React from "react";
 import { ProductEntity } from "../domain";
+
+import Link from "next/link";
 interface IProps {
   product: ProductEntity;
+  restaurantId: string;
 }
 
-export default function ProductCategory({ product }: IProps) {
+export default function ProductCategory({ product, restaurantId }: IProps) {
   return (
     <Accordion type="single" collapsible className="border-b-2 ">
-      <AccordionItem value="temakis">
+      <AccordionItem value={product.id}>
         <AccordionTrigger className="text-base font-semibold cursor-pointer">
           {product.name}
         </AccordionTrigger>
@@ -23,7 +26,8 @@ export default function ProductCategory({ product }: IProps) {
             {product.description}
           </p>
           {product.variants.map((variant, index) => (
-            <div
+            <Link
+              href={`/restaurant/${restaurantId}/product/${product.id}`}
               key={index}
               className="flex flex-col border-b mt-2 pb-2 pl-2 mb-2"
             >
@@ -56,7 +60,7 @@ export default function ProductCategory({ product }: IProps) {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </AccordionContent>
       </AccordionItem>

@@ -25,7 +25,7 @@ export default async function Restaurant({
         <div className="py-4 space-y-3 w-full">
           <RestaurantHeader info={restaurantInfoResponse} />
           <RestaurantInfo info={restaurantInfoResponse} />
-          <RestaurantProducts products={products} />
+          <RestaurantProducts idRestaurant={id} products={products} />
         </div>
       </div>
     </div>
