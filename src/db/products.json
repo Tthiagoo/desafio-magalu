@@ -16,13 +16,13 @@
       {
         "id": "2",
         "name": "Mix",
-        "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
+        "description": "arroz temperado, salmão, atum, camarão e kani",
         "price": 13.99,
         "promo": false,
         "from": true
       },
       {
-        "id": "3",
+        "id": "10",
         "name": "Filadélfia",
         "description": "Arroz, salmão fresco, cream cheese e cebolinha",
         "price": 13.99,

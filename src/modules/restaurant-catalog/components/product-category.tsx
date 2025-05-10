@@ -27,7 +27,7 @@ export default function ProductCategory({ product, restaurantId }: IProps) {
           </p>
           {product.variants.map((variant, index) => (
             <Link
-              href={`/restaurant/${restaurantId}/product/${product.id}`}
+              href={`/restaurant/${restaurantId}/product/${variant.id}`}
               key={index}
               className="flex flex-col border-b mt-2 pb-2 pl-2 mb-2"
             >

@@ -45,7 +45,9 @@ export default function ProductHeader({ infoHeader }: IProps) {
             {formatMoney(inicialPrice)}
           </span>
         </div>
-
+        <span className="text-sm text-neutral-500">
+          {infoHeader.description}
+        </span>
         <div className="pt-2 mt-2 border-b-4 pb-5">
           <div className="flex h-12 items-center justify-between mt-1">
             <div className="flex flex-col gap-1">

@@ -4,11 +4,11 @@
     "productId": "1",
     "idRestaurant": "1",
     "imageRestaurant": "/images-restaurants/matsuri.png",
-    "nameRestaurant": "Matsuri Concepttit",
-    "name": "Cheviche de frango",
-    "image": "/prato1.png",
+    "nameRestaurant": "Matsuri Concept",
+    "name": "Temaki Califórnia",
+    "image": "/temaki-california.jpg",
     "inicialPrice": 30,
-    "description": "frango",
+    "description": "bolinho de arroz com pele de peixe, com Kani, pepino e maçã ou manga ",
     "customization": [
       {
         "id": "201",
@@ -34,16 +34,15 @@
       {
         "id": "202",
         "title": "acompanhamentos",
-        "description": "escolhe um",
+        "description": "escolha quantos quiser",
         "type": "multi",
-        "required": true,
+        "required": false,
         "min": 1,
         "max": 2,
         "options": [
           { "label": "shoyu", "price": 0, "id": "acomp_1" },
           { "label": "gengibre", "price": 0, "id": "acomp_2" },
-          { "label": "wasabi", "price": 0, "id": "acomp_3" },
-          { "label": "sem acompanhamentos", "price": 0, "id": "acomp_4" }
+          { "label": "wasabi", "price": 0, "id": "acomp_3" }
         ]
       },
       {
@@ -62,6 +61,126 @@
   },
   {
     "id": "2",
+    "productId": "1",
+    "idRestaurant": "1",
+    "imageRestaurant": "/images-restaurants/matsuri.png",
+    "nameRestaurant": "Matsuri Concept",
+    "name": "Temaki Mix",
+    "image": "/temaki-mix.jpg",
+    "inicialPrice": 30,
+    "description": "arroz temperado, salmão, atum, camarão e kani, combinado com cebolinha, gergelim e um toque especial de molho. ",
+    "customization": [
+      {
+        "id": "201",
+        "title": "qual o tamanho?",
+        "description": "escolhe um",
+        "type": "single",
+        "required": true,
+        "options": [
+          {
+            "label": "médio",
+            "price": 19.9,
+            "hasPromotion": true,
+            "oldPrice": 17.5,
+            "id": "tamanho_1"
+          },
+          {
+            "label": "grande",
+            "price": 28.9,
+            "id": "tamanho_2"
+          }
+        ]
+      },
+      {
+        "id": "202",
+        "title": "acompanhamentos",
+        "description": "escolha quantos quiser",
+        "type": "multi",
+        "required": false,
+        "min": 1,
+        "max": 2,
+        "options": [
+          { "label": "shoyu", "price": 0, "id": "acomp_1" },
+          { "label": "gengibre", "price": 0, "id": "acomp_2" },
+          { "label": "wasabi", "price": 0, "id": "acomp_3" }
+        ]
+      },
+      {
+        "id": "203",
+        "title": "vai querer bebida?",
+        "type": "quantity",
+        "options": [
+          { "label": "coca-cola", "price": 5.0, "id": "bebida_1" },
+          { "label": "fanta laranja", "price": 5.0, "id": "bebida_2" },
+          { "label": "guaraná antarctica", "price": 5.0, "id": "bebida_3" },
+          { "label": "suco prats laranja", "price": 6.0, "id": "bebida_4" },
+          { "label": "água sem gás", "price": 3.0, "id": "bebida_5" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "productId": "1",
+    "idRestaurant": "1",
+    "imageRestaurant": "/images-restaurants/matsuri.png",
+    "nameRestaurant": "Matsuri Concept",
+    "name": "Temaki Filadélfia",
+    "image": "/temaki-filadelfia.jpg",
+    "inicialPrice": 30,
+    "description": "Cone de alga crocante recheado com arroz temperado, salmão fresco, cream cheese cremoso e cebolinha",
+    "customization": [
+      {
+        "id": "201",
+        "title": "qual o tamanho?",
+        "description": "escolhe um",
+        "type": "single",
+        "required": true,
+        "options": [
+          {
+            "label": "médio",
+            "price": 19.9,
+            "hasPromotion": true,
+            "oldPrice": 17.5,
+            "id": "tamanho_1"
+          },
+          {
+            "label": "grande",
+            "price": 28.9,
+            "id": "tamanho_2"
+          }
+        ]
+      },
+      {
+        "id": "202",
+        "title": "acompanhamentos",
+        "description": "escolha quantos quiser",
+        "type": "multi",
+        "required": false,
+        "min": 1,
+        "max": 2,
+        "options": [
+          { "label": "shoyu", "price": 0, "id": "acomp_1" },
+          { "label": "gengibre", "price": 0, "id": "acomp_2" },
+          { "label": "wasabi", "price": 0, "id": "acomp_3" }
+        ]
+      },
+      {
+        "id": "203",
+        "title": "vai querer bebida?",
+        "type": "quantity",
+        "options": [
+          { "label": "coca-cola", "price": 5.0, "id": "bebida_1" },
+          { "label": "fanta laranja", "price": 5.0, "id": "bebida_2" },
+          { "label": "guaraná antarctica", "price": 5.0, "id": "bebida_3" },
+          { "label": "suco prats laranja", "price": 6.0, "id": "bebida_4" },
+          { "label": "água sem gás", "price": 3.0, "id": "bebida_5" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
     "productId": "5",
     "name": "Whopper Burger King",
     "image": "/pizza-frango-catupiry.png",
@@ -100,7 +219,7 @@
     ]
   },
   {
-    "id": "3",
+    "id": "4",
     "productId": "6",
     "name": "Big Mac McDonald's",
     "image": "/pizza-frango-catupiry.png",
@@ -138,7 +257,7 @@
     ]
   },
   {
-    "id": "4",
+    "id": "5",
     "productId": "7",
     "name": "Pizza Pepperoni Pizza Hut",
     "image": "/pizza-pepperoni.png",
@@ -174,7 +293,7 @@
     ]
   },
   {
-    "id": "5",
+    "id": "6",
     "productId": "8",
     "name": "Pizza Frango com Catupiry Domino's",
     "image": "/pizza-frango-catupiry.png",
@@ -212,7 +331,7 @@
     ]
   },
   {
-    "id": "6",
+    "id": "7",
     "productId": "9",
     "name": "Yakissoba China in Box",
     "image": "/yakissoba.png",

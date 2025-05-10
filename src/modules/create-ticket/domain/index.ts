@@ -5,6 +5,7 @@ export interface ITicketEntity {
   productId: string;
   name: string;
   image: string;
+  description: string;
   imageRestaurant?: string;
   nameRestaurant: string;
   inicialPrice: number;
