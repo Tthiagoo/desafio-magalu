@@ -28,11 +28,13 @@ export type Product = {
   customization: IProductCustomization[];
 };
 
+export type AppliedCustomizationEntry = {
+  title: string;
+  value: CustomizationOption | CustomizationOption[] | Record<string, number>;
+};
+
 export type AppliedCustomizations = {
-  [customizationId: string]:
-    | CustomizationOption
-    | CustomizationOption[]
-    | Record<string, number>;
+  [customizationId: string]: AppliedCustomizationEntry;
 };
 
 export type CartItem = {

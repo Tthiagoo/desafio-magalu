@@ -29,14 +29,19 @@ export function useSingleCustomization(
   });
 
   const currentCustomizations = item?.customizations || {};
-  const selectedOption = currentCustomizations[customization.id] as
-    | CustomizationOption
-    | undefined;
+  const selectedOption =
+    (currentCustomizations[customization.id]?.value as CustomizationOption) ||
+    undefined;
 
   const handleChange = (label: string) => {
     const option = customization.options.find((o) => o.label === label);
     if (option) {
-      applyCustomization(productId, customization.id, option);
+      applyCustomization(
+        productId,
+        customization.id,
+        option,
+        customization.title
+      );
     }
   };
 
@@ -56,9 +61,9 @@ export function useMultiCustomization(
 
   const currentCustomizations = item?.customizations || {};
   const currentOptions: CustomizationOption[] = Array.isArray(
-    currentCustomizations[customization.id]
+    currentCustomizations[customization.id]?.value
   )
-    ? (currentCustomizations[customization.id] as CustomizationOption[])
+    ? (currentCustomizations[customization.id]?.value as CustomizationOption[])
     : [];
 
   const isOptionChecked = (option: CustomizationOption) =>
@@ -71,7 +76,12 @@ export function useMultiCustomization(
     } else {
       updatedOptions = [...currentOptions, option];
     }
-    applyCustomization(productId, customization.id, updatedOptions);
+    applyCustomization(
+      productId,
+      customization.id,
+      updatedOptions,
+      customization.title
+    );
   };
 
   return { isOptionChecked, toggleOption };
@@ -92,27 +102,46 @@ export function useQuantityCustomization(
 
   const handleIncrement = (optionId: string) => {
     const quantityObj =
-      (currentCustomizations[customization.id] as Record<string, number>) || {};
+      (currentCustomizations[customization.id]?.value as Record<
+        string,
+        number
+      >) || {};
     const currentQuantity = quantityObj[optionId] || 0;
     const newQuantity = currentQuantity + 1;
     const updated = { ...quantityObj, [optionId]: newQuantity };
-    applyCustomization(productId, customization.id, updated);
+    applyCustomization(
+      productId,
+      customization.id,
+      updated,
+      customization.title
+    );
   };
 
   const handleDecrement = (optionId: string) => {
     const quantityObj =
-      (currentCustomizations[customization.id] as Record<string, number>) || {};
+      (currentCustomizations[customization.id]?.value as Record<
+        string,
+        number
+      >) || {};
     const currentQuantity = quantityObj[optionId] || 0;
     if (currentQuantity > 0) {
       const newQuantity = currentQuantity - 1;
       const updated = { ...quantityObj, [optionId]: newQuantity };
-      applyCustomization(productId, customization.id, updated);
+      applyCustomization(
+        productId,
+        customization.id,
+        updated,
+        customization.title
+      );
     }
   };
 
   const getQuantity = (optionId: string) => {
     const quantityObj =
-      (currentCustomizations[customization.id] as Record<string, number>) || {};
+      (currentCustomizations[customization.id]?.value as Record<
+        string,
+        number
+      >) || {};
     return quantityObj[optionId] || 0;
   };
 

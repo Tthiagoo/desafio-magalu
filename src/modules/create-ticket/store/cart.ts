@@ -17,7 +17,8 @@ export interface CartState {
   applyCustomization: (
     productId: string,
     customizationId: string,
-    value: CustomizationOption | CustomizationOption[] | Record<string, number>
+    value: CustomizationOption | CustomizationOption[] | Record<string, number>,
+    title: string
   ) => void;
   setRestaurant: (restaurant: { name: string; image: string }) => void;
 }
@@ -52,14 +53,17 @@ export const useCartStore = create<CartState>()(
       },
       clearCart: () => set({ items: [], restaurant: undefined }),
       getTotal: () => calculateCartTotal(get().items),
-      applyCustomization: (productId, customizationId, value) => {
+      applyCustomization: (productId, customizationId, value, title) => {
         const items = get().items.map((item) => {
           if (item.product.id === productId) {
             return {
               ...item,
               customizations: {
                 ...item.customizations,
-                [customizationId]: value,
+                [customizationId]: {
+                  title,
+                  value,
+                },
               },
             };
           }
