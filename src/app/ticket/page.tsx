@@ -91,7 +91,7 @@ const subtotal = mockProducts.reduce((acc, p) => acc + p.price * p.quantity, 0);
 export default function Ticket() {
   return (
     <div className="max-w-md mx-auto mt-4  px-2">
-      <TicketRestaurantHeader restaurant={mockRestaurant} />
+      <TicketRestaurantHeader />
       {mockProducts.map((product, i) => (
         <TicketProductItem key={i} product={product} />
       ))}

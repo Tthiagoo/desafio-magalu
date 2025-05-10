@@ -5,6 +5,10 @@ import { calculateCartTotal } from "../utils";
 
 export interface CartState {
   items: CartItem[];
+  restaurant?: {
+    name: string;
+    image: string;
+  };
   addToCart: (newItem: CartItem) => void;
   updateItemInCart: (productId: string, updatedItem: CartItem) => void;
   removeItem: (productId: string) => void;
@@ -15,12 +19,14 @@ export interface CartState {
     customizationId: string,
     value: CustomizationOption | CustomizationOption[] | Record<string, number>
   ) => void;
+  setRestaurant: (restaurant: { name: string; image: string }) => void;
 }
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+      restaurant: undefined,
       addToCart: (newItem) => {
         const items = get().items.slice();
         const existingIndex = items.findIndex(
@@ -44,7 +50,7 @@ export const useCartStore = create<CartState>()(
           items: get().items.filter((item) => item.product.id !== productId),
         });
       },
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], restaurant: undefined }),
       getTotal: () => calculateCartTotal(get().items),
       applyCustomization: (productId, customizationId, value) => {
         const items = get().items.map((item) => {
@@ -61,6 +67,7 @@ export const useCartStore = create<CartState>()(
         });
         set({ items });
       },
+      setRestaurant: (restaurant) => set({ restaurant }),
     }),
     { name: "cart-storage" }
   )

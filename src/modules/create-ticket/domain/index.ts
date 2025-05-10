@@ -6,6 +6,7 @@ export interface ITicketEntity {
   name: string;
   image: string;
   imageRestaurant?: string;
+  nameRestaurant: string;
   inicialPrice: number;
   customization: IProductCustomization[];
 }

@@ -2,6 +2,9 @@
   {
     "id": "1",
     "productId": "1",
+    "idRestaurant": "1",
+    "imageRestaurant": "/images-restaurants/matsuri.png",
+    "nameRestaurant": "Matsuri Concepttit",
     "name": "Cheviche de frango",
     "image": "/prato1.png",
     "inicialPrice": 30,

@@ -7,6 +7,8 @@ import { ITicketEntity } from "../domain";
 import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
 import { useProductHeader } from "../hooks/useCustomizations";
+import { useCartStore } from "../store/cart";
+import { info } from "console";
 
 interface IProps {
   infoHeader: ITicketEntity;
@@ -15,8 +17,13 @@ interface IProps {
 export default function ProductHeader({ infoHeader }: IProps) {
   const { quantity, handleIncrement, handleDecrement } =
     useProductHeader(infoHeader);
+  console.log("infoHeader", infoHeader);
   const { inicialPrice } = infoHeader;
-
+  const addInfoRestaurant = useCartStore((state) => state.setRestaurant);
+  const infoRestaurant = {
+    name: infoHeader.nameRestaurant,
+    image: infoHeader.imageRestaurant!,
+  };
   return (
     <>
       <div className="w-full flex justify-center">
@@ -56,7 +63,14 @@ export default function ProductHeader({ infoHeader }: IProps) {
             </div>
 
             {quantity === 0 ? (
-              <Button onClick={handleIncrement}>adicionar</Button>
+              <Button
+                onClick={() => {
+                  addInfoRestaurant(infoRestaurant);
+                  handleIncrement();
+                }}
+              >
+                adicionar
+              </Button>
             ) : (
               <QuantityCount
                 quantity={quantity}
