@@ -1,82 +1,44 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { CustomizationOption, CartItem } from "../types";
-import { calculateCartTotal } from "../utils";
 
-export interface CartState {
-  items: CartItem[];
-  restaurant?: {
-    name: string;
-    image: string;
-  };
-  addToCart: (newItem: CartItem) => void;
-  updateItemInCart: (productId: string, updatedItem: CartItem) => void;
-  removeItem: (productId: string) => void;
-  clearCart: () => void;
-  getTotal: () => number;
-  applyCustomization: (
-    productId: string,
-    customizationId: string,
-    value:
-      | CustomizationOption
-      | CustomizationOption[]
-      | Record<string, number>
-      | Record<string, { label: string; quantity: number }>,
-    title: string
-  ) => void;
-  setRestaurant: (restaurant: { name: string; image: string }) => void;
+interface CartItem {
+  product: any; // Ajuste o tipo conforme seu domínio
+  quantity: number;
+  customizations?: Record<string, any>;
 }
 
-export const useCartStore = create<CartState>()(
-  persist(
+interface CartState {
+  items: CartItem[];
+  addToCart: (item: CartItem) => void;
+  updateItem: (productId: string, item: CartItem) => void;
+  removeItem: (productId: string) => void;
+  clearCart: () => void;
+}
+
+export const useCartStore = create(
+  persist<CartState>(
     (set, get) => ({
       items: [],
-      restaurant: undefined,
-      addToCart: (newItem) => {
-        const items = get().items.slice();
-        const existingIndex = items.findIndex(
-          (item) => item.product.id === newItem.product.id
-        );
-        if (existingIndex !== -1) {
-          items[existingIndex] = { ...newItem };
-        } else {
-          items.push(newItem);
-        }
-        set({ items });
+      addToCart: (item) => {
+        console.log("addToCart", item);
+        set((state) => ({
+          items: [...state.items, item],
+        }));
       },
-      updateItemInCart: (productId, updatedItem) => {
-        const items = get().items.map((item) =>
-          item.product.id === productId ? { ...updatedItem } : item
-        );
-        set({ items });
+      updateItem: (productId, updatedItem) => {
+        set((state) => ({
+          items: state.items.map((item) =>
+            item.product.id === productId ? { ...updatedItem } : item
+          ),
+        }));
       },
       removeItem: (productId) => {
-        set({
-          items: get().items.filter((item) => item.product.id !== productId),
-        });
+        set((state) => ({
+          items: state.items.filter((item) => item.product.id !== productId),
+        }));
       },
-      clearCart: () => set({ items: [], restaurant: undefined }),
-      getTotal: () => calculateCartTotal(get().items),
-      applyCustomization: (productId, customizationId, value, title) => {
-        const items = get().items.map((item) => {
-          if (item.product.id === productId) {
-            return {
-              ...item,
-              customizations: {
-                ...item.customizations,
-                [customizationId]: {
-                  title,
-                  value,
-                },
-              },
-            };
-          }
-          return item;
-        });
-        set({ items });
-      },
-      setRestaurant: (restaurant) => set({ restaurant }),
+      clearCart: () => set({ items: [] }),
     }),
-    { name: "cart-storage" }
+    { name: "cart-store" }
   )
 );

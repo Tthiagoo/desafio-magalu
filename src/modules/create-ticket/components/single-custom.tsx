@@ -4,7 +4,7 @@ import { Label } from "@/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/ui/radio-group";
 import { IProductCustomization } from "../types";
 import React from "react";
-import { useSingleCustomization } from "../hooks/useCustomizations";
+import { useSingleCustomizationV2 } from "../hooks/useCustomizations";
 
 interface IProps {
   productId: string;
@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export function SingleCustom({ productId, customization }: IProps) {
-  const { selectedOption, handleChange } = useSingleCustomization(
+  const { selectedOptionId, handleSelectOption } = useSingleCustomizationV2(
     productId,
     customization
   );
@@ -20,15 +20,15 @@ export function SingleCustom({ productId, customization }: IProps) {
   return (
     <div className="pr-8 border-b-4 pl-4 mt-4 pb-4">
       <RadioGroup
-        defaultValue={selectedOption?.label}
-        onValueChange={handleChange}
+        value={selectedOptionId}
+        onValueChange={handleSelectOption}
         className="space-y-3"
       >
         {customization.options.map((item, index) => (
           <div className="space-x-2 flex items-center" key={index}>
             <RadioGroupItem
               id={`${customization.id}-${index}`}
-              value={item.label}
+              value={item.id}
             />
             <Label
               className="flex justify-between w-full"

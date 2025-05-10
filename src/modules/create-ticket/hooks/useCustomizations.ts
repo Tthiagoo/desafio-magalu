@@ -1,8 +1,7 @@
-import { ITicketEntity } from "../domain";
 import { useCartStore } from "../store/cart";
 
 import { CustomizationOption, IProductCustomization } from "../types";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function useCartProductItem(productId: string) {
   return useCartStore(
@@ -14,7 +13,22 @@ function useCartProductItem(productId: string) {
 }
 
 function useApplyCustomization() {
-  return useCartStore((s) => s.applyCustomization);
+  const updateItem = useCartStore((s) => s.updateItem);
+  const item = useCartStore((s) => s.items);
+  return (
+    productId: string,
+    customizationId: string,
+    value: any,
+    title: string
+  ) => {
+    const currentItem = item.find((i) => i.product.id === productId);
+    if (!currentItem) return;
+    const customizations = {
+      ...currentItem.customizations,
+      [customizationId]: { value, title },
+    };
+    updateItem(productId, { ...currentItem, customizations });
+  };
 }
 
 export function useSingleCustomization(
@@ -23,16 +37,10 @@ export function useSingleCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-
-  useEffect(() => {
-    console.log("[useSingleCustomization] render", { productId, item });
-  });
-
   const currentCustomizations = item?.customizations || {};
   const selectedOption =
     (currentCustomizations[customization.id]?.value as CustomizationOption) ||
     undefined;
-
   const handleChange = (label: string) => {
     const option = customization.options.find((o) => o.label === label);
     if (option) {
@@ -44,8 +52,60 @@ export function useSingleCustomization(
       );
     }
   };
-
   return { selectedOption, handleChange };
+}
+
+export function useSingleCustomizationV2(
+  productId: string,
+  customization: IProductCustomization
+) {
+  const item = useCartProductItem(productId);
+  const applyCustomization = useApplyCustomization();
+  const [selectedOptionId, setSelectedOptionId] = useState<string | undefined>(
+    customization.options[0]?.id
+  );
+
+  useEffect(() => {
+    // Usa apenas a primeira opção como default
+    const defaultOption = customization.options[0];
+    const currentValue = item?.customizations?.[customization.id]?.value;
+    if (!currentValue && defaultOption) {
+      applyCustomization(
+        productId,
+        customization.id,
+        defaultOption,
+        customization.title
+      );
+      setSelectedOptionId(defaultOption.id);
+    } else if (currentValue && currentValue.id) {
+      setSelectedOptionId(currentValue.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    item,
+    customization.id,
+    customization.options,
+    customization.title,
+    productId,
+  ]);
+
+  const handleSelectOption = useCallback(
+    (optionId: string) => {
+      setSelectedOptionId(optionId);
+      const option = customization.options.find((opt) => opt.id === optionId);
+      if (option) {
+        applyCustomization(
+          productId,
+          customization.id,
+          option,
+          customization.title
+        );
+      }
+    },
+    [applyCustomization, customization, productId]
+  );
+
+  return { selectedOptionId, handleSelectOption };
 }
 
 export function useMultiCustomization(
@@ -54,21 +114,14 @@ export function useMultiCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-
-  useEffect(() => {
-    console.log("[useMultiCustomization] render", { productId, item });
-  });
-
   const currentCustomizations = item?.customizations || {};
   const currentOptions: CustomizationOption[] = Array.isArray(
     currentCustomizations[customization.id]?.value
   )
     ? (currentCustomizations[customization.id]?.value as CustomizationOption[])
     : [];
-
   const isOptionChecked = (option: CustomizationOption) =>
     currentOptions.some((opt) => opt.id === option.id);
-
   const toggleOption = (option: CustomizationOption) => {
     let updatedOptions: CustomizationOption[] = [];
     if (isOptionChecked(option)) {
@@ -83,7 +136,6 @@ export function useMultiCustomization(
       customization.title
     );
   };
-
   return { isOptionChecked, toggleOption };
 }
 
@@ -93,13 +145,7 @@ export function useQuantityCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-
-  useEffect(() => {
-    console.log("[useQuantityCustomization] render", { productId, item });
-  });
-
   const currentCustomizations = item?.customizations || {};
-
   const handleIncrement = (optionId: string) => {
     const quantityObj =
       (currentCustomizations[customization.id]?.value as Record<
@@ -124,7 +170,6 @@ export function useQuantityCustomization(
       customization.title
     );
   };
-
   const handleDecrement = (optionId: string) => {
     const quantityObj =
       (currentCustomizations[customization.id]?.value as Record<
@@ -149,7 +194,6 @@ export function useQuantityCustomization(
       customization.title
     );
   };
-
   const getQuantity = (optionId: string) => {
     const quantityObj =
       (currentCustomizations[customization.id]?.value as Record<
@@ -158,59 +202,83 @@ export function useQuantityCustomization(
       >) || {};
     return quantityObj[optionId]?.quantity || 0;
   };
-
   return { handleIncrement, handleDecrement, getQuantity };
 }
 
-export function useProductHeader(infoHeader: ITicketEntity) {
+export function useProductHeader(infoHeader: any) {
   const { id: productId } = infoHeader;
   const items = useCartStore((s) => s.items);
   const addToCart = useCartStore((s) => s.addToCart);
-  const updateItemInCart = useCartStore((s) => s.updateItemInCart);
-
+  const updateItem = useCartStore((s) => s.updateItem);
+  const removeItem = useCartStore((s) => s.removeItem);
   const currentItem = items.find((item) => item.product.id === productId);
   const quantity = currentItem ? currentItem.quantity : 0;
-
   const handleIncrement = useCallback(() => {
     const newQuantity = quantity + 1;
-    const currentCustomizations = currentItem ? currentItem.customizations : {};
+    console.log(infoHeader);
     const cartItem = {
       product: infoHeader,
       quantity: newQuantity,
-      customizations: currentCustomizations,
     };
     if (!currentItem) {
       addToCart(cartItem);
     } else {
-      updateItemInCart(productId, cartItem);
+      updateItem(productId, cartItem);
     }
-  }, [
-    quantity,
-    currentItem,
-    infoHeader,
-    addToCart,
-    updateItemInCart,
-    productId,
-  ]);
-
+  }, [quantity, currentItem, infoHeader, addToCart, updateItem, productId]);
   const handleDecrement = useCallback(() => {
     if (quantity <= 1) {
-      updateItemInCart(productId, {
-        product: infoHeader,
-        quantity: 0,
-        customizations: {},
-      });
+      // Remover o item do carrinho ao invés de zerar
+      removeItem(productId);
     } else {
       const currentCustomizations = currentItem
         ? currentItem.customizations
         : {};
-      updateItemInCart(productId, {
+      updateItem(productId, {
         product: infoHeader,
         quantity: quantity - 1,
         customizations: currentCustomizations,
       });
     }
-  }, [quantity, currentItem, infoHeader, updateItemInCart, productId]);
-
+  }, [quantity, currentItem, infoHeader, updateItem, removeItem, productId]);
   return { quantity, handleIncrement, handleDecrement };
+}
+
+export function useProductQuantitySelector(product: any) {
+  const items = useCartStore((s) => s.items);
+  const addToCart = useCartStore((s) => s.addToCart);
+  const removeItem = useCartStore((s) => s.removeItem);
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    const item = items.find((item) => item.product.id === product.id);
+    if (item) {
+      setQuantity(item.quantity);
+    } else {
+      setQuantity(0);
+    }
+  }, [items, product.id]);
+
+  const updateCart = useCallback(
+    (newQuantity: number) => {
+      if (newQuantity === 0) {
+        setQuantity(0);
+        removeItem(product.id);
+        return;
+      }
+      setQuantity(newQuantity);
+      addToCart({
+        product,
+        quantity: newQuantity,
+        customizations: {},
+      });
+    },
+    [addToCart, removeItem, product]
+  );
+
+  const total = (quantity * (product.price || product.inicialPrice || 0) || 0)
+    .toFixed(2)
+    .replace(".", ",");
+
+  return { quantity, setQuantity: updateCart, total };
 }

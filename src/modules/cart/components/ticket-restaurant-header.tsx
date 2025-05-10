@@ -5,7 +5,7 @@ import { useCartStore } from "../../create-ticket/store/cart";
 
 export function TicketRestaurantHeader() {
   const storeRestaurant = useCartStore((state) => state.restaurant);
-  console.log("storeRestaurant", storeRestaurant);
+
   const data = storeRestaurant;
   return (
     <div className="flex items-center gap-3 mb-4">

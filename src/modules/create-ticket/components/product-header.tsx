@@ -6,24 +6,18 @@ import { formatMoney } from "@/lib/utils";
 import { ITicketEntity } from "../domain";
 import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
-import { useProductHeader } from "../hooks/useCustomizations";
-import { useCartStore } from "../store/cart";
-import { info } from "console";
+import { useProductQuantitySelector } from "../hooks/useCustomizations";
 
 interface IProps {
   infoHeader: ITicketEntity;
 }
 
 export default function ProductHeader({ infoHeader }: IProps) {
-  const { quantity, handleIncrement, handleDecrement } =
-    useProductHeader(infoHeader);
   console.log("infoHeader", infoHeader);
-  const { inicialPrice } = infoHeader;
-  const addInfoRestaurant = useCartStore((state) => state.setRestaurant);
-  const infoRestaurant = {
-    name: infoHeader.nameRestaurant,
-    image: infoHeader.imageRestaurant!,
-  };
+
+  const { quantity, setQuantity, total } =
+    useProductQuantitySelector(infoHeader);
+
   return (
     <>
       <div className="w-full flex justify-center">
@@ -42,7 +36,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
         <div className="mt-1 font-extrabold">
           <span className="text-sm text-neutral-500">a partir de</span>
           <span className="text-lg font-extrabold ml-1 text-purple-500">
-            {formatMoney(inicialPrice)}
+            {formatMoney(infoHeader.inicialPrice)}
           </span>
         </div>
         <span className="text-sm text-neutral-500">
@@ -57,27 +51,20 @@ export default function ProductHeader({ infoHeader }: IProps) {
               <span className="text-sm text-neutral-500 font-bold">
                 Total
                 <strong className="text-md ml-1 text-neutral-700">
-                  {quantity
-                    ? formatMoney(inicialPrice * quantity)
-                    : formatMoney(inicialPrice)}
+                  {total
+                    ? formatMoney(Number(total.replace(",", ".")))
+                    : formatMoney(infoHeader.inicialPrice)}
                 </strong>
               </span>
             </div>
 
             {quantity === 0 ? (
-              <Button
-                onClick={() => {
-                  addInfoRestaurant(infoRestaurant);
-                  handleIncrement();
-                }}
-              >
-                adicionar
-              </Button>
+              <Button onClick={() => setQuantity(1)}>adicionar</Button>
             ) : (
               <QuantityCount
                 quantity={quantity}
-                onIncrement={handleIncrement}
-                onDecrement={handleDecrement}
+                onIncrement={() => setQuantity(quantity + 1)}
+                onDecrement={() => setQuantity(quantity - 1)}
               />
             )}
           </div>
