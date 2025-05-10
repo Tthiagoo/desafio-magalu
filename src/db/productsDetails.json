@@ -8,6 +8,7 @@
     "name": "Temaki Califórnia",
     "image": "/temaki-california.jpg",
     "description": "bolinho de arroz com pele de peixe, com Kani, pepino e maçã ou manga ",
+    "price": 19.9,
     "customization": [
       {
         "id": "201",
@@ -66,6 +67,7 @@
     "nameRestaurant": "Matsuri Concept",
     "name": "Temaki Mix",
     "image": "/temaki-mix.jpg",
+    "price": 19.9,
     "description": "arroz temperado, salmão, atum, camarão e kani, combinado com cebolinha, gergelim e um toque especial de molho. ",
     "customization": [
       {
@@ -122,6 +124,7 @@
     "productId": "1",
     "idRestaurant": "1",
     "imageRestaurant": "/images-restaurants/matsuri.png",
+    "price": 19.9,
     "nameRestaurant": "Matsuri Concept",
     "name": "Temaki Filadélfia",
     "image": "/temaki-filadelfia.jpg",
@@ -182,23 +185,8 @@
     "name": "Whopper Burger King",
     "image": "/pizza-frango-catupiry.png",
     "description": "O clássico Whopper do Burger King",
+    "price": 22.99,
     "customization": [
-      {
-        "id": "301",
-        "title": "Escolha o tamanho",
-        "type": "single",
-        "required": true,
-        "options": [
-          { "label": "Whopper Jr.", "price": 15.99, "id": "1" },
-          {
-            "label": "Whopper Duplo",
-            "price": 22.99,
-            "id": "2",
-            "hasPromotion": true,
-            "oldPrice": 25.99
-          }
-        ]
-      },
       {
         "id": "302",
         "title": "Adicionais",
@@ -219,24 +207,9 @@
     "productId": "6",
     "name": "Big Mac McDonald's",
     "image": "/pizza-frango-catupiry.png",
+    "price": 24.99,
     "description": "O famoso Big Mac do McDonald's",
     "customization": [
-      {
-        "id": "401",
-        "title": "Tamanho",
-        "type": "single",
-        "required": true,
-        "options": [
-          { "label": "Big Mac", "price": 18.99, "id": "1" },
-          {
-            "label": "Big Mac Duplo",
-            "price": 24.99,
-            "id": "2",
-            "hasPromotion": true,
-            "oldPrice": 27.99
-          }
-        ]
-      },
       {
         "id": "402",
         "title": "Molhos extras",
@@ -257,6 +230,7 @@
     "name": "Pizza Pepperoni Pizza Hut",
     "image": "/pizza-pepperoni.png",
     "description": "Pizza de pepperoni da Pizza Hut",
+    "price": 39.99,
     "customization": [
       {
         "id": "501",
@@ -292,6 +266,7 @@
     "name": "Pizza Frango com Catupiry Domino's",
     "image": "/pizza-frango-catupiry.png",
     "description": "Pizza tradicional Domino's",
+    "price": 37.99,
     "customization": [
       {
         "id": "601",
@@ -329,6 +304,7 @@
     "name": "Yakissoba China in Box",
     "image": "/yakissoba.png",
     "description": "Yakissoba tradicional China in Box",
+    "price": 29.99,
     "customization": [
       {
         "id": "701",

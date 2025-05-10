@@ -8,6 +8,7 @@ import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
 import { useProductQuantitySelector } from "../hooks/useCustomizations";
 import { useCartStore } from "../store/cart";
+import { info } from "console";
 
 interface IProps {
   infoHeader: ITicketEntity;
@@ -24,7 +25,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
     infoHeader,
     restaurantInfo
   );
-
+  console.log(infoHeader.price);
   return (
     <>
       <div className="w-full flex justify-center">

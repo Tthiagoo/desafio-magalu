@@ -8,7 +8,7 @@ export interface ITicketEntity {
   description: string;
   imageRestaurant?: string;
   nameRestaurant: string;
-  price: number;
+  price?: number;
   customization: IProductCustomization[];
 }
 

@@ -24,7 +24,7 @@ function useApplyCustomization() {
     const currentItem = item.find((i) => i.product.id === productId);
     if (!currentItem) return;
     let updatedProduct = { ...currentItem.product };
-    // Se for a customização de tamanho, atualiza o preço do produto
+
     if (title.toLowerCase() === "tamanho" && value && value.price) {
       updatedProduct.price = value.price;
     }
@@ -38,6 +38,30 @@ function useApplyCustomization() {
       customizations,
     });
   };
+}
+
+export function useSingleCustomization(
+  productId: string,
+  customization: IProductCustomization
+) {
+  const item = useCartProductItem(productId);
+  const applyCustomization = useApplyCustomization();
+  const currentCustomizations = item?.customizations || {};
+  const selectedOption =
+    (currentCustomizations[customization.id]?.value as CustomizationOption) ||
+    undefined;
+  const handleChange = (label: string) => {
+    const option = customization.options.find((o) => o.label === label);
+    if (option) {
+      applyCustomization(
+        productId,
+        customization.id,
+        option,
+        customization.title
+      );
+    }
+  };
+  return { selectedOption, handleChange };
 }
 
 export function useSingleCustomizationV2(
@@ -187,45 +211,6 @@ export function useQuantityCustomization(
     return quantityObj[optionId]?.quantity || 0;
   };
   return { handleIncrement, handleDecrement, getQuantity };
-}
-
-export function useProductHeader(infoHeader: any) {
-  const { id: productId } = infoHeader;
-  const items = useCartStore((s) => s.items);
-  const addToCart = useCartStore((s) => s.addToCart);
-  const updateItem = useCartStore((s) => s.updateItem);
-  const removeItem = useCartStore((s) => s.removeItem);
-  const currentItem = items.find((item) => item.product.id === productId);
-  const quantity = currentItem ? currentItem.quantity : 0;
-  const handleIncrement = useCallback(() => {
-    const newQuantity = quantity + 1;
-    console.log(infoHeader);
-    const cartItem = {
-      product: infoHeader,
-      quantity: newQuantity,
-    };
-    if (!currentItem) {
-      addToCart(cartItem);
-    } else {
-      updateItem(productId, cartItem);
-    }
-  }, [quantity, currentItem, infoHeader, addToCart, updateItem, productId]);
-  const handleDecrement = useCallback(() => {
-    if (quantity <= 1) {
-      // Remover o item do carrinho ao invés de zerar
-      removeItem(productId);
-    } else {
-      const currentCustomizations = currentItem
-        ? currentItem.customizations
-        : {};
-      updateItem(productId, {
-        product: infoHeader,
-        quantity: quantity - 1,
-        customizations: currentCustomizations,
-      });
-    }
-  }, [quantity, currentItem, infoHeader, updateItem, removeItem, productId]);
-  return { quantity, handleIncrement, handleDecrement };
 }
 
 export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
