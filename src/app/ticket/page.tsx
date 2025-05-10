@@ -14,8 +14,8 @@ export default function Ticket() {
   console.log("items", items);
   return (
     <div className="max-w-md mx-auto mt-4  px-2">
-      {/* <TicketRestaurantHeader />
-      {mappedItems.map((product, i) => (
+      <TicketRestaurantHeader />
+      {/* {mappedItems.map((product, i) => (
         <TicketProductItem key={i} {...product} />
       ))}
       <div className="h-24" />
