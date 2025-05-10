@@ -15,11 +15,16 @@ export default function Ticket() {
   return (
     <div className="max-w-md mx-auto mt-4  px-2">
       <TicketRestaurantHeader />
-      {/* {mappedItems.map((product, i) => (
-        <TicketProductItem key={i} {...product} />
+      {items.map((product, i) => (
+        <TicketProductItem
+          key={i}
+          product={product}
+          quantity={product.quantity}
+          options={product.customizations}
+        />
       ))}
       <div className="h-24" />
-      <TicketSummary subtotal={calculateCartTotal(mappedItems)} /> */}
+      {/* <TicketSummary subtotal={calculateCartTotal(items)} /> */}
     </div>
   );
 }

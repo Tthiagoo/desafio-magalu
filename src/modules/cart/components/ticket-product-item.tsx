@@ -5,7 +5,7 @@ import type { CartItemFromStore } from "@/modules/create-ticket/types";
 import { renderAllOptions } from "./render-options";
 import TicketCustomizationItem from "./ticket-customization-item";
 
-export function TicketProductItem(product: CartItemFromStore) {
+export function TicketProductItem({ product, quantity, options }: any) {
   console.log("[TicketProductItem] render", { product });
   return (
     <div className="border-b border-neutral-200 pb-4 mb-2 last:border-b-0 last:pb-0 last:mb-0">
@@ -23,12 +23,12 @@ export function TicketProductItem(product: CartItemFromStore) {
             <div className="flex items-center gap-2 ml-auto">
               <button
                 className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 disabled:text-neutral-300 text-lg"
-                disabled={product.quantity <= 1}
+                disabled={quantity <= 1}
               >
                 <Minus className="w-4 h-4" />
               </button>
               <span className="font-semibold text-base w-4 text-center">
-                {product.quantity}
+                {quantity}
               </span>
               <button className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 text-lg">
                 <Plus className="w-4 h-4" />
@@ -38,7 +38,7 @@ export function TicketProductItem(product: CartItemFromStore) {
               </button>
             </div>
           </div>
-          <TicketCustomizationItem option={product.options} product={product} />
+          <TicketCustomizationItem customizations={options} />
         </div>
       </div>
     </div>
