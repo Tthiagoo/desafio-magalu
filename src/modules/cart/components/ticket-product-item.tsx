@@ -1,18 +1,26 @@
 "use client";
 import React from "react";
 import { Pencil, Plus, Minus } from "lucide-react";
+import { CartItem } from "@/modules/create-ticket/types";
 
-export interface TicketProductItemProps {
-  product: {
-    name: string;
-    price: number;
-    quantity: number;
-    options?: string[];
-    observation?: string;
-  };
-}
+// export interface TicketProductItemProps {
+//   product: {
+//     name: string;
+//     price: number;
+//     quantity: number;
+//     options?: string[];
+//     observation?: string;
+//   };
+// }
 
-export function TicketProductItem({ product }: TicketProductItemProps) {
+export function TicketProductItem({
+  product,
+  customizations,
+  quantity,
+  observation,
+}: CartItem) {
+  console.log("cart item product", product);
+
   function renderOption(opt: string) {
     const match = opt.match(/(.+?)(\s*\+R\$[\d,.]+)/);
     if (match) {
@@ -76,10 +84,10 @@ export function TicketProductItem({ product }: TicketProductItemProps) {
         <div className="flex-1">
           <div className="flex justify-between items-center">
             <span className="font-bold text-base text-neutral-800">
-              {product.name}
+              {product.product.name}
             </span>
             <span className="font-bold text-purple-600 text-lg">
-              R$ {product.price.toFixed(2)}
+              R$ {product.product.inicialPrice}
             </span>
           </div>
           <div className="flex items-center justify-end gap-2 mt-2">
