@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Pencil, Plus, Minus } from "lucide-react";
+import { Pencil, Plus, Minus, Trash2 } from "lucide-react";
 
 import TicketCustomizationItem from "./ticket-customization-item";
 import { useCartStore } from "@/modules/create-ticket/store/cart";
@@ -43,19 +43,31 @@ export function TicketProductItem({ product, quantity, options }: any) {
           </div>
           <div className="flex items-center justify-end gap-2 mt-2">
             <div className="flex items-center gap-2 ml-auto">
-              <button
-                className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 disabled:text-neutral-300 text-lg"
-                disabled={quantity <= 1}
-                onClick={handleDecrement}
-              >
-                <Minus className="w-4 h-4" />
-              </button>
+              {quantity <= 1 ? (
+                <button
+                  className="border border-red-500 rounded-full w-7 h-7 flex items-center justify-center text-red-500 text-lg"
+                  onClick={() => removeItem(product.product.id)}
+                  title="Remover"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              ) : (
+                <button
+                  className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 disabled:text-neutral-300 text-lg"
+                  onClick={handleDecrement}
+                  disabled={quantity <= 1}
+                  title="Diminuir"
+                >
+                  <Minus className="w-4 h-4" />
+                </button>
+              )}
               <span className="font-semibold text-base w-4 text-center">
                 {quantity}
               </span>
               <button
                 className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 text-lg"
                 onClick={handleIncrement}
+                title="Adicionar"
               >
                 <Plus className="w-4 h-4" />
               </button>

@@ -24,16 +24,6 @@ export default function ProductHeader({ infoHeader }: IProps) {
     infoHeader,
     restaurantInfo
   );
-  const setInfoRestaurant = useCartStore((s: any) => s.setInfoRestaurant);
-
-  React.useEffect(() => {
-    if (infoHeader && infoHeader.nameRestaurant && infoHeader.imageRestaurant) {
-      setInfoRestaurant({
-        name: infoHeader.nameRestaurant,
-        image: infoHeader.imageRestaurant,
-      });
-    }
-  }, [infoHeader, setInfoRestaurant]);
 
   return (
     <>
