@@ -9,16 +9,19 @@ interface CartItem {
 
 interface CartState {
   items: CartItem[];
+  infoRestaurant: any;
   addToCart: (item: CartItem) => void;
   updateItem: (productId: string, item: CartItem) => void;
   removeItem: (productId: string) => void;
   clearCart: () => void;
+  setInfoRestaurant: (restaurantInfo: any) => void; // Adiciona tipo para restaurantInfo
 }
 
 export const useCartStore = create(
   persist<CartState>(
     (set, get) => ({
       items: [],
+      infoRestaurant: null,
       addToCart: (item) => {
         console.log("addToCart", item);
         set((state) => ({
@@ -38,6 +41,9 @@ export const useCartStore = create(
         }));
       },
       clearCart: () => set({ items: [] }),
+      setInfoRestaurant: (restaurantInfo) => {
+        set(() => ({ infoRestaurant: restaurantInfo }));
+      },
     }),
     { name: "cart-store" }
   )

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useCartStore } from "../../create-ticket/store/cart";
 
 export function TicketRestaurantHeader() {
-  const storeRestaurant = useCartStore((state) => state.restaurant);
+  const storeRestaurant = useCartStore((state) => state.items);
 
   const data = storeRestaurant;
   return (

@@ -244,10 +244,11 @@ export function useProductHeader(infoHeader: any) {
   return { quantity, handleIncrement, handleDecrement };
 }
 
-export function useProductQuantitySelector(product: any) {
+export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
   const items = useCartStore((s) => s.items);
   const addToCart = useCartStore((s) => s.addToCart);
   const removeItem = useCartStore((s) => s.removeItem);
+  const setInfoRestaurant = useCartStore((s) => s.setInfoRestaurant);
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
@@ -267,13 +268,16 @@ export function useProductQuantitySelector(product: any) {
         return;
       }
       setQuantity(newQuantity);
+      if (restaurantInfo) {
+        setInfoRestaurant(restaurantInfo);
+      }
       addToCart({
         product,
         quantity: newQuantity,
         customizations: {},
       });
     },
-    [addToCart, removeItem, product]
+    [addToCart, removeItem, setInfoRestaurant, product, restaurantInfo]
   );
 
   const total = (quantity * (product.price || product.inicialPrice || 0) || 0)

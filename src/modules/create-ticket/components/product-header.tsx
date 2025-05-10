@@ -7,6 +7,7 @@ import { ITicketEntity } from "../domain";
 import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
 import { useProductQuantitySelector } from "../hooks/useCustomizations";
+import { useCartStore } from "../store/cart";
 
 interface IProps {
   infoHeader: ITicketEntity;
@@ -15,8 +16,24 @@ interface IProps {
 export default function ProductHeader({ infoHeader }: IProps) {
   console.log("infoHeader", infoHeader);
 
-  const { quantity, setQuantity, total } =
-    useProductQuantitySelector(infoHeader);
+  const restaurantInfo = {
+    name: infoHeader.nameRestaurant,
+    image: infoHeader.imageRestaurant,
+  };
+  const { quantity, setQuantity, total } = useProductQuantitySelector(
+    infoHeader,
+    restaurantInfo
+  );
+  const setInfoRestaurant = useCartStore((s: any) => s.setInfoRestaurant);
+
+  React.useEffect(() => {
+    if (infoHeader && infoHeader.nameRestaurant && infoHeader.imageRestaurant) {
+      setInfoRestaurant({
+        name: infoHeader.nameRestaurant,
+        image: infoHeader.imageRestaurant,
+      });
+    }
+  }, [infoHeader, setInfoRestaurant]);
 
   return (
     <>
@@ -51,8 +68,8 @@ export default function ProductHeader({ infoHeader }: IProps) {
               <span className="text-sm text-neutral-500 font-bold">
                 Total
                 <strong className="text-md ml-1 text-neutral-700">
-                  {total
-                    ? formatMoney(Number(total.replace(",", ".")))
+                  {quantity > 0
+                    ? formatMoney(infoHeader.inicialPrice * quantity)
                     : formatMoney(infoHeader.inicialPrice)}
                 </strong>
               </span>
