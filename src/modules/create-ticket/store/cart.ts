@@ -17,7 +17,11 @@ export interface CartState {
   applyCustomization: (
     productId: string,
     customizationId: string,
-    value: CustomizationOption | CustomizationOption[] | Record<string, number>,
+    value:
+      | CustomizationOption
+      | CustomizationOption[]
+      | Record<string, number>
+      | Record<string, { label: string; quantity: number }>,
     title: string
   ) => void;
   setRestaurant: (restaurant: { name: string; image: string }) => void;

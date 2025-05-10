@@ -30,7 +30,11 @@ export type Product = {
 
 export type AppliedCustomizationEntry = {
   title: string;
-  value: CustomizationOption | CustomizationOption[] | Record<string, number>;
+  value:
+    | CustomizationOption
+    | CustomizationOption[]
+    | Record<string, number>
+    | Record<string, { label: string; quantity: number; price?: number }>;
 };
 
 export type AppliedCustomizations = {

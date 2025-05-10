@@ -3,8 +3,10 @@ import React from "react";
 import { Pencil, Plus, Minus } from "lucide-react";
 import type { CartItemFromStore } from "@/modules/create-ticket/types";
 import { renderAllOptions } from "./render-options";
+import TicketCustomizationItem from "./ticket-customization-item";
 
 export function TicketProductItem(product: CartItemFromStore) {
+  console.log("[TicketProductItem] render", { product });
   return (
     <div className="border-b border-neutral-200 pb-4 mb-2 last:border-b-0 last:pb-0 last:mb-0">
       <div className="flex items-start gap-3">
@@ -36,15 +38,7 @@ export function TicketProductItem(product: CartItemFromStore) {
               </button>
             </div>
           </div>
-          <div className="text-xs text-neutral-700 mt-1 space-y-0.5">
-            {product.options && renderAllOptions(product.options, product)}
-            {product.observation && (
-              <div className="bg-neutral-100 rounded px-2 py-1 mt-1 text-xs text-neutral-700 border border-neutral-200">
-                <span className="font-semibold">observação:</span>{" "}
-                {product.observation}
-              </div>
-            )}
-          </div>
+          <TicketCustomizationItem option={product.options} product={product} />
         </div>
       </div>
     </div>
