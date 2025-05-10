@@ -33,7 +33,7 @@ export default function Ticket() {
         </>
       )}
       <div className="h-24" />
-      {/* <TicketSummary subtotal={calculateCartTotal(items)} /> */}
+      <TicketSummary subtotal={calculateCartTotal(items)} />
     </div>
   );
 }

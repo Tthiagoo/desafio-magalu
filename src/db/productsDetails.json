@@ -7,7 +7,6 @@
     "nameRestaurant": "Matsuri Concept",
     "name": "Temaki Califórnia",
     "image": "/temaki-california.jpg",
-    "inicialPrice": 30,
     "description": "bolinho de arroz com pele de peixe, com Kani, pepino e maçã ou manga ",
     "customization": [
       {
@@ -67,7 +66,6 @@
     "nameRestaurant": "Matsuri Concept",
     "name": "Temaki Mix",
     "image": "/temaki-mix.jpg",
-    "inicialPrice": 30,
     "description": "arroz temperado, salmão, atum, camarão e kani, combinado com cebolinha, gergelim e um toque especial de molho. ",
     "customization": [
       {
@@ -127,7 +125,6 @@
     "nameRestaurant": "Matsuri Concept",
     "name": "Temaki Filadélfia",
     "image": "/temaki-filadelfia.jpg",
-    "inicialPrice": 30,
     "description": "Cone de alga crocante recheado com arroz temperado, salmão fresco, cream cheese cremoso e cebolinha",
     "customization": [
       {
@@ -184,7 +181,6 @@
     "productId": "5",
     "name": "Whopper Burger King",
     "image": "/pizza-frango-catupiry.png",
-    "inicialPrice": 15.99,
     "description": "O clássico Whopper do Burger King",
     "customization": [
       {
@@ -223,7 +219,6 @@
     "productId": "6",
     "name": "Big Mac McDonald's",
     "image": "/pizza-frango-catupiry.png",
-    "inicialPrice": 18.99,
     "description": "O famoso Big Mac do McDonald's",
     "customization": [
       {
@@ -261,7 +256,6 @@
     "productId": "7",
     "name": "Pizza Pepperoni Pizza Hut",
     "image": "/pizza-pepperoni.png",
-    "inicialPrice": 39.99,
     "description": "Pizza de pepperoni da Pizza Hut",
     "customization": [
       {
@@ -297,7 +291,6 @@
     "productId": "8",
     "name": "Pizza Frango com Catupiry Domino's",
     "image": "/pizza-frango-catupiry.png",
-    "inicialPrice": 37.99,
     "description": "Pizza tradicional Domino's",
     "customization": [
       {
@@ -335,7 +328,6 @@
     "productId": "9",
     "name": "Yakissoba China in Box",
     "image": "/yakissoba.png",
-    "inicialPrice": 27.99,
     "description": "Yakissoba tradicional China in Box",
     "customization": [
       {

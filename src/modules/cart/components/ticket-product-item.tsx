@@ -4,6 +4,7 @@ import { Pencil, Plus, Minus, Trash2 } from "lucide-react";
 
 import TicketCustomizationItem from "./ticket-customization-item";
 import { useCartStore } from "@/modules/create-ticket/store/cart";
+import { formatMoney } from "@/lib/utils";
 
 export function TicketProductItem({ product, quantity, options }: any) {
   const addToCart = useCartStore((s) => s.addToCart);
@@ -38,7 +39,7 @@ export function TicketProductItem({ product, quantity, options }: any) {
               {product.product.name}
             </span>
             <span className="font-bold text-purple-600 text-lg">
-              R$ {product.product.inicialPrice}
+              R$ {formatMoney(product.product.price)}
             </span>
           </div>
           <div className="flex items-center justify-end gap-2 mt-2">

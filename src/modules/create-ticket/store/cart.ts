@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface CartItem {
-  product: any; // Ajuste o tipo conforme seu domínio
+  product: any;
   quantity: number;
   customizations?: Record<string, any>;
 }
@@ -14,7 +14,7 @@ interface CartState {
   updateItem: (productId: string, item: CartItem) => void;
   removeItem: (productId: string) => void;
   clearCart: () => void;
-  setInfoRestaurant: (restaurantInfo: any) => void; // Adiciona tipo para restaurantInfo
+  setInfoRestaurant: (restaurantInfo: any) => void;
 }
 
 export const useCartStore = create(

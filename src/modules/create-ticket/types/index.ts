@@ -24,7 +24,7 @@ export type Product = {
   productId: string;
   name: string;
   image: string;
-  inicialPrice: number;
+  price: number;
   customization: IProductCustomization[];
 };
 
@@ -58,7 +58,7 @@ export interface CartItemFromStore {
     id: string;
     name: string;
     image: string;
-    inicialPrice: number;
+    price?: number;
   };
   quantity: number;
   options?: string[];

@@ -23,36 +23,21 @@ function useApplyCustomization() {
   ) => {
     const currentItem = item.find((i) => i.product.id === productId);
     if (!currentItem) return;
+    let updatedProduct = { ...currentItem.product };
+    // Se for a customização de tamanho, atualiza o preço do produto
+    if (title.toLowerCase() === "tamanho" && value && value.price) {
+      updatedProduct.price = value.price;
+    }
     const customizations = {
       ...currentItem.customizations,
       [customizationId]: { value, title },
     };
-    updateItem(productId, { ...currentItem, customizations });
+    updateItem(productId, {
+      ...currentItem,
+      product: updatedProduct,
+      customizations,
+    });
   };
-}
-
-export function useSingleCustomization(
-  productId: string,
-  customization: IProductCustomization
-) {
-  const item = useCartProductItem(productId);
-  const applyCustomization = useApplyCustomization();
-  const currentCustomizations = item?.customizations || {};
-  const selectedOption =
-    (currentCustomizations[customization.id]?.value as CustomizationOption) ||
-    undefined;
-  const handleChange = (label: string) => {
-    const option = customization.options.find((o) => o.label === label);
-    if (option) {
-      applyCustomization(
-        productId,
-        customization.id,
-        option,
-        customization.title
-      );
-    }
-  };
-  return { selectedOption, handleChange };
 }
 
 export function useSingleCustomizationV2(
@@ -80,7 +65,6 @@ export function useSingleCustomizationV2(
     } else if (currentValue && currentValue.id) {
       setSelectedOptionId(currentValue.id);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     item,
     customization.id,
@@ -280,7 +264,7 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
     [addToCart, removeItem, setInfoRestaurant, product, restaurantInfo]
   );
 
-  const total = (quantity * (product.price || product.inicialPrice || 0) || 0)
+  const total = (quantity * (product.price || 0) || 0)
     .toFixed(2)
     .replace(".", ",");
 

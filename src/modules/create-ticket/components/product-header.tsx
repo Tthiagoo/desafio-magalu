@@ -43,7 +43,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
         <div className="mt-1 font-extrabold">
           <span className="text-sm text-neutral-500">a partir de</span>
           <span className="text-lg font-extrabold ml-1 text-purple-500">
-            {formatMoney(infoHeader.inicialPrice)}
+            {formatMoney(infoHeader.price!)}
           </span>
         </div>
         <span className="text-sm text-neutral-500">
@@ -59,8 +59,8 @@ export default function ProductHeader({ infoHeader }: IProps) {
                 Total
                 <strong className="text-md ml-1 text-neutral-700">
                   {quantity > 0
-                    ? formatMoney(infoHeader.inicialPrice * quantity)
-                    : formatMoney(infoHeader.inicialPrice)}
+                    ? formatMoney(infoHeader.price! * quantity)
+                    : formatMoney(infoHeader.price!)}
                 </strong>
               </span>
             </div>
