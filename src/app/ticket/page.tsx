@@ -6,8 +6,10 @@ import {
   TicketRestaurantHeader,
 } from "../../modules/cart/components";
 import { useCartStore } from "@/modules/create-ticket/store/cart";
+import Link from "next/link";
 
 import { calculateCartTotal } from "@/modules/create-ticket/utils";
+import CartEmpty from "@/modules/cart/components/cart-empty";
 
 export default function Ticket() {
   const items = useCartStore((state) => state.items);
@@ -16,9 +18,7 @@ export default function Ticket() {
   return (
     <div className="max-w-md mx-auto mt-4  px-2">
       {isEmpty ? (
-        <div className="flex flex-col items-center justify-center py-12 text-neutral-400 text-lg font-semibold">
-          Seu carrinho está vazio
-        </div>
+        <CartEmpty />
       ) : (
         <>
           <TicketRestaurantHeader />
