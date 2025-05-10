@@ -7,6 +7,7 @@ import {
 } from "../../modules/cart/components";
 import { useCartStore } from "@/modules/create-ticket/store/cart";
 import { MappedItems } from "@/modules/cart/utils";
+import { calculateCartTotal } from "@/modules/create-ticket/utils";
 
 export default function Ticket() {
   const items = useCartStore((state) => state.items);
@@ -20,12 +21,7 @@ export default function Ticket() {
         <TicketProductItem key={i} {...product} />
       ))}
       <div className="h-24" />
-      <TicketSummary
-        subtotal={mappedItems.reduce(
-          (acc, p) => acc + p.product.inicialPrice * p.quantity,
-          0
-        )}
-      />
+      <TicketSummary subtotal={calculateCartTotal(mappedItems)} />
     </div>
   );
 }
