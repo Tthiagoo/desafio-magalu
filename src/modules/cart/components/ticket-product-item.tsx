@@ -1,11 +1,33 @@
 "use client";
 import React from "react";
 import { Pencil, Plus, Minus } from "lucide-react";
-import type { CartItemFromStore } from "@/modules/create-ticket/types";
-import { renderAllOptions } from "./render-options";
+
 import TicketCustomizationItem from "./ticket-customization-item";
+import { useCartStore } from "@/modules/create-ticket/store/cart";
 
 export function TicketProductItem({ product, quantity, options }: any) {
+  const addToCart = useCartStore((s) => s.addToCart);
+  const updateItem = useCartStore((s) => s.updateItem);
+  const removeItem = useCartStore((s) => s.removeItem);
+
+  const handleIncrement = () => {
+    const newQuantity = quantity + 1;
+    updateItem(product.product.id, {
+      ...product,
+      quantity: newQuantity,
+    });
+  };
+
+  const handleDecrement = () => {
+    if (quantity <= 1) {
+      removeItem(product.product.id);
+    } else {
+      updateItem(product.product.id, {
+        ...product,
+        quantity: quantity - 1,
+      });
+    }
+  };
   console.log("[TicketProductItem] render", { product });
   return (
     <div className="border-b border-neutral-200 pb-4 mb-2 last:border-b-0 last:pb-0 last:mb-0">
@@ -24,13 +46,17 @@ export function TicketProductItem({ product, quantity, options }: any) {
               <button
                 className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 disabled:text-neutral-300 text-lg"
                 disabled={quantity <= 1}
+                onClick={handleDecrement}
               >
                 <Minus className="w-4 h-4" />
               </button>
               <span className="font-semibold text-base w-4 text-center">
                 {quantity}
               </span>
-              <button className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 text-lg">
+              <button
+                className="border border-teal-600 rounded-full w-7 h-7 flex items-center justify-center text-teal-600 text-lg"
+                onClick={handleIncrement}
+              >
                 <Plus className="w-4 h-4" />
               </button>
               <button className="flex items-center gap-1 text-teal-600 font-semibold text-sm hover:underline px-1 ml-2">
