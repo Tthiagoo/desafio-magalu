@@ -15,7 +15,7 @@ export default async function Product({
 
   const { getCustomizationByProductId } = serviceTicket(fetch);
   const customizationResponse = await getCustomizationByProductId(productId);
-  console.log(customizationResponse);
+
   return (
     <div className=" w-full items-center flex flex-col h-full  overflow-y-auto">
       <div className="flex-grow  max-w-[600px] w-full">

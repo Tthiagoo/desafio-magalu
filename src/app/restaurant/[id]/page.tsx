@@ -11,13 +11,10 @@ export default async function Restaurant({
 }) {
   const { id } = await params;
 
-  console.log(id);
-
   const { getCatalogById, getRestaurantInfo } = CatalogService(fetch);
 
   const products = await getCatalogById(id);
   const restaurantInfoResponse = await getRestaurantInfo(id);
-  console.log(restaurantInfoResponse);
 
   return (
     <div className=" w-full  items-center flex flex-col mt-2 h-full overflow-y-auto">
