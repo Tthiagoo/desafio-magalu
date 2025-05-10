@@ -39,4 +39,5 @@ export type CartItem = {
   product: Product;
   quantity: number;
   customizations: AppliedCustomizations;
+  observation?: string;
 };

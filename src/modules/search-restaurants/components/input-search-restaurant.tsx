@@ -2,11 +2,18 @@
 
 import { Input } from "@/ui/input";
 import { SearchIcon } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { Suspense } from "react";
 import { useFilterRestaurants } from "../hooks";
 
 export function InputSearchRestaurant() {
+  return (
+    <Suspense>
+      <InputSearchRestaurantContent />
+    </Suspense>
+  );
+}
+
+function InputSearchRestaurantContent() {
   const { search, setSearch } = useFilterRestaurants();
   return (
     <div className="flex flex-col max-w-96 w-full relative">

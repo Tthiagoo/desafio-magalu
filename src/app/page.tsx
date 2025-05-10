@@ -1,7 +1,5 @@
 import ListRestaurant from "@/modules/search-restaurants/components/list-restaurant";
 import { RestaurantService } from "@/modules/search-restaurants/service";
-
-import { Button } from "@/ui/button";
 import Image from "next/image";
 
 export default async function Home() {

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ChevronRight, Star } from "lucide-react";
 import { DeliveryIcon } from "./delivery-icon";
 import { RestaurantEntity } from "@/modules/search-restaurants/domain";

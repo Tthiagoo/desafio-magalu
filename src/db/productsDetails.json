@@ -56,5 +56,194 @@
         ]
       }
     ]
+  },
+  {
+    "id": "2",
+    "productId": "5",
+    "name": "Whopper Burger King",
+    "image": "/pizza-frango-catupiry.png",
+    "inicialPrice": 15.99,
+    "description": "O clássico Whopper do Burger King",
+    "customization": [
+      {
+        "id": "301",
+        "title": "Escolha o tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Whopper Jr.", "price": 15.99, "id": "1" },
+          {
+            "label": "Whopper Duplo",
+            "price": 22.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 25.99
+          }
+        ]
+      },
+      {
+        "id": "302",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Bacon", "price": 3.0, "id": "add_bacon" },
+          { "label": "Queijo extra", "price": 2.0, "id": "add_queijo" },
+          { "label": "Cebola crispy", "price": 2.5, "id": "add_cebola" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "productId": "6",
+    "name": "Big Mac McDonald's",
+    "image": "/pizza-frango-catupiry.png",
+    "inicialPrice": 18.99,
+    "description": "O famoso Big Mac do McDonald's",
+    "customization": [
+      {
+        "id": "401",
+        "title": "Tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Big Mac", "price": 18.99, "id": "1" },
+          {
+            "label": "Big Mac Duplo",
+            "price": 24.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 27.99
+          }
+        ]
+      },
+      {
+        "id": "402",
+        "title": "Molhos extras",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Molho especial", "price": 1.5, "id": "molho_especial" },
+          { "label": "Barbecue", "price": 1.5, "id": "molho_bbq" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "productId": "7",
+    "name": "Pizza Pepperoni Pizza Hut",
+    "image": "/pizza-pepperoni.png",
+    "inicialPrice": 39.99,
+    "description": "Pizza de pepperoni da Pizza Hut",
+    "customization": [
+      {
+        "id": "501",
+        "title": "Tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Média", "price": 39.99, "id": "1" },
+          {
+            "label": "Grande",
+            "price": 49.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 59.99
+          }
+        ]
+      },
+      {
+        "id": "502",
+        "title": "Borda recheada?",
+        "type": "single",
+        "required": false,
+        "options": [
+          { "label": "Sim", "price": 7.0, "id": "borda_sim" },
+          { "label": "Não", "price": 0, "id": "borda_nao" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "productId": "8",
+    "name": "Pizza Frango com Catupiry Domino's",
+    "image": "/pizza-frango-catupiry.png",
+    "inicialPrice": 37.99,
+    "description": "Pizza tradicional Domino's",
+    "customization": [
+      {
+        "id": "601",
+        "title": "Tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Média", "price": 37.99, "id": "1" },
+          {
+            "label": "Grande",
+            "price": 47.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 55.99
+          }
+        ]
+      },
+      {
+        "id": "602",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Catupiry extra", "price": 4.0, "id": "catupiry_extra" },
+          { "label": "Bacon", "price": 3.0, "id": "bacon" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "productId": "9",
+    "name": "Yakissoba China in Box",
+    "image": "/yakissoba.png",
+    "inicialPrice": 27.99,
+    "description": "Yakissoba tradicional China in Box",
+    "customization": [
+      {
+        "id": "701",
+        "title": "Tipo de carne",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Carne", "price": 29.99, "id": "1" },
+          {
+            "label": "Frango",
+            "price": 27.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 32.99
+          }
+        ]
+      },
+      {
+        "id": "702",
+        "title": "Acompanhamentos",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Legumes", "price": 0, "id": "legumes" },
+          { "label": "Shoyu extra", "price": 1.0, "id": "shoyu_extra" }
+        ]
+      }
+    ]
   }
 ]

@@ -3,8 +3,8 @@ import { formatMoney } from "@/lib/utils";
 import { Checkbox } from "@/ui/checkbox";
 import { Label } from "@/ui/label";
 import React from "react";
-import { CustomizationOption, IProductCustomization } from "../types";
-import { useCartStore } from "../store";
+import { IProductCustomization } from "../types";
+import { useMultiCustomization } from "../hooks/useCustomizations";
 
 interface IProps {
   productId: string;
@@ -12,33 +12,10 @@ interface IProps {
 }
 
 export function MultiCustom({ productId, customization }: IProps) {
-  const items = useCartStore((s) => s.items);
-  const applyCustomization = useCartStore((s) => s.applyCustomization);
-
-  const currentIndex = items.findIndex((item) => item.product.id === productId);
-  const currentCustomizations =
-    currentIndex !== -1 ? items[currentIndex].customizations : {};
-
-  const currentOptions: CustomizationOption[] = Array.isArray(
-    currentCustomizations[customization.id]
-  )
-    ? (currentCustomizations[customization.id] as CustomizationOption[])
-    : [];
-
-  const isOptionChecked = (option: CustomizationOption) =>
-    currentOptions.some((opt) => opt.id === option.id);
-
-  const toggleOption = (option: CustomizationOption) => {
-    let updatedOptions: CustomizationOption[] = [];
-
-    if (isOptionChecked(option)) {
-      updatedOptions = currentOptions.filter((opt) => opt.id !== option.id);
-    } else {
-      updatedOptions = [...currentOptions, option];
-    }
-
-    applyCustomization(productId, customization.id, updatedOptions);
-  };
+  const { isOptionChecked, toggleOption } = useMultiCustomization(
+    productId,
+    customization
+  );
 
   return (
     <div className="mt-4 flex-col gap-3 pl-4 pr-8 border-b-4 flex pb-4">

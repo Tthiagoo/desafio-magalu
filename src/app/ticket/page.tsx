@@ -1,0 +1,64 @@
+import React from "react";
+import {
+  TicketProductItem,
+  TicketSummary,
+  TicketRestaurantHeader,
+} from "../../modules/cart/components";
+
+// Dados mockados
+const mockRestaurant = {
+  name: "Matsuri Concept",
+  image: "/images-restaurants/matsuri.png",
+};
+
+const mockProducts = [
+  {
+    name: "Ceviche de salmão",
+    image: "/images-restaurants/matsuri.png",
+    price: 19.9,
+    quantity: 2,
+    options: ["tamanho médio", "vai querer bebida? coca-cola +R$5,00"],
+    observation: "tirar a cebolinha",
+  },
+  {
+    name: "Temaki Filadélfia",
+    image: "/images-restaurants/matsuri.png",
+    price: 14.0,
+    quantity: 1,
+    options: [
+      "escolha 3 ingredientes",
+      "shimeji",
+      "cream cheese",
+      "tomate seco",
+    ],
+    observation: "tirar a cebolinha",
+  },
+  {
+    name: "Temaki Mix",
+    image: "/images-restaurants/matsuri.png",
+    price: 22.0,
+    quantity: 1,
+    options: ["quer o dobro? salmão +R$8,00"],
+  },
+  {
+    name: "Coca-cola lata",
+    image: "/images-restaurants/matsuri.png",
+    price: 10.0,
+    quantity: 2,
+  },
+];
+
+const subtotal = mockProducts.reduce((acc, p) => acc + p.price * p.quantity, 0);
+
+export default function Ticket() {
+  return (
+    <div className="max-w-md mx-auto pb-32 px-2">
+      <TicketRestaurantHeader restaurant={mockRestaurant} />
+      {mockProducts.map((product, i) => (
+        <TicketProductItem key={i} product={product} />
+      ))}
+      <div className="h-24" /> {/* Espaço para o resumo fixo */}
+      <TicketSummary subtotal={subtotal} />
+    </div>
+  );
+}

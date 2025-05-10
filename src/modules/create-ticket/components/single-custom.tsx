@@ -2,9 +2,9 @@
 import { formatMoney } from "@/lib/utils";
 import { Label } from "@/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/ui/radio-group";
-import { CustomizationOption, IProductCustomization } from "../types";
+import { IProductCustomization } from "../types";
 import React from "react";
-import { useCartStore } from "../store";
+import { useSingleCustomization } from "../hooks/useCustomizations";
 
 interface IProps {
   productId: string;
@@ -12,23 +12,10 @@ interface IProps {
 }
 
 export function SingleCustom({ productId, customization }: IProps) {
-  const items = useCartStore((s) => s.items);
-  const applyCustomization = useCartStore((s) => s.applyCustomization);
-
-  const currentIndex = items.findIndex((item) => item.product.id === productId);
-  const currentCustomizations =
-    currentIndex !== -1 ? items[currentIndex].customizations : {};
-
-  const selectedOption = currentCustomizations[customization.id] as
-    | CustomizationOption
-    | undefined;
-
-  const handleChange = (label: string) => {
-    const option = customization.options.find((o) => o.label === label);
-    if (option) {
-      applyCustomization(productId, customization.id, option);
-    }
-  };
+  const { selectedOption, handleChange } = useSingleCustomization(
+    productId,
+    customization
+  );
 
   return (
     <div className="pr-8 border-b-4 pl-4 mt-4 pb-4">

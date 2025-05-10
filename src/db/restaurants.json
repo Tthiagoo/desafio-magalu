@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "Matsuri Concept",
+    "name": "Matsuri Concepttit",
     "image": "/images-restaurants/matsuri.png",
     "deliveryFee": 5,
     "deliveryTime": "30-40 min",
@@ -28,7 +28,7 @@
     "tags": ["japonês", "sushi"]
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Burger King - Colombo",
     "image": "/images-restaurants/burger-king.png",
     "deliveryFee": 6.0,
@@ -42,7 +42,7 @@
     "tags": ["japonês", "sushi"]
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "McDonald’s - Novo Centro",
     "image": "/images-restaurants/mcdonalds.png",
     "deliveryFee": 6.0,
@@ -56,7 +56,7 @@
     "tags": ["japonês", "sushi"]
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Pizza hut",
     "image": "/images-restaurants/pizza-hut.png",
     "deliveryFee": 0,
@@ -70,7 +70,7 @@
     "tags": ["japonês", "sushi"]
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Domino's Pizza",
     "image": "/images-restaurants/dominos.png",
     "deliveryFee": 0,
@@ -84,7 +84,7 @@
     "tags": ["japonês", "sushi"]
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Domino's Pizza",
     "image": "/images-restaurants/dominos.png",
     "deliveryFee": 0,
@@ -96,5 +96,19 @@
     "distance": "5.2km",
     "open": false,
     "tags": ["japonês", "sushi"]
+  },
+  {
+    "id": "6",
+    "name": "China in Box",
+    "image": "/images-restaurants/china-in-box.png",
+    "deliveryFee": 7.0,
+    "rating": 4.2,
+    "minOrder": 20,
+    "freeShippingAbove": 50,
+    "closingHour": "22:00",
+    "deliveryTime": "40-50 min",
+    "distance": "6.5km",
+    "open": true,
+    "tags": ["chinesa", "yakissoba"]
   }
 ]

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { ProductTitleCustomization } from "./product-title-customization";
 import { SingleCustom } from "./single-custom";

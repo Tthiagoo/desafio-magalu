@@ -4,7 +4,7 @@ import React from "react";
 import { IProductCustomization } from "../types";
 import { formatMoney } from "@/lib/utils";
 import { QuantityCount } from "./quantity-count";
-import { useCartStore } from "../store";
+import { useQuantityCustomization } from "../hooks/useCustomizations";
 
 interface IProps {
   customization: IProductCustomization;
@@ -12,41 +12,13 @@ interface IProps {
 }
 
 export function QuantityCustom({ customization, productId }: IProps) {
-  const items = useCartStore((s) => s.items);
-  const applyCustomization = useCartStore((s) => s.applyCustomization);
-
-  const currentIndex = items.findIndex((item) => item.product.id === productId);
-  const currentCustomizations =
-    currentIndex !== -1 ? items[currentIndex].customizations : {};
-
-  const handleIncrement = (optionId: string) => {
-    const quantityObj =
-      (currentCustomizations[customization.id] as Record<string, number>) || {};
-    const currentQuantity = quantityObj[optionId] || 0;
-    const newQuantity = currentQuantity + 1;
-    const updated = { ...quantityObj, [optionId]: newQuantity };
-    applyCustomization(productId, customization.id, updated);
-  };
-
-  const handleDecrement = (optionId: string) => {
-    const quantityObj =
-      (currentCustomizations[customization.id] as Record<string, number>) || {};
-    const currentQuantity = quantityObj[optionId] || 0;
-    if (currentQuantity > 0) {
-      const newQuantity = currentQuantity - 1;
-      const updated = { ...quantityObj, [optionId]: newQuantity };
-      applyCustomization(productId, customization.id, updated);
-    }
-  };
+  const { handleIncrement, handleDecrement, getQuantity } =
+    useQuantityCustomization(productId, customization);
 
   return (
     <div className="pl-4 border-b-3 mt-3 pr-9 pb-3">
       {customization.options.map((option, index) => {
-        const quantityObj =
-          (currentCustomizations[customization.id] as Record<string, number>) ||
-          {};
-        const quantity = quantityObj[option.id] || 0;
-
+        const quantity = getQuantity(option.id);
         return (
           <div
             key={index}

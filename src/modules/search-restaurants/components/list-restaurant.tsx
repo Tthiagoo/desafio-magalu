@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import ItemRestaurant from "./item-restaurant";
 import { RestaurantEntity } from "../domain";
 import { useSearchParams } from "next/navigation";
@@ -11,6 +11,14 @@ export interface IProps {
 }
 
 export default function ListRestaurant({ restaurants }: IProps) {
+  return (
+    <Suspense>
+      <ListRestaurantContent restaurants={restaurants} />
+    </Suspense>
+  );
+}
+
+function ListRestaurantContent({ restaurants }: IProps) {
   const searchParams = useSearchParams();
   const query = searchParams.get("q")?.toLowerCase() || "";
 

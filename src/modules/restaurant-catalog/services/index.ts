@@ -6,6 +6,7 @@ export function CatalogService(
 ): RestaurantCatalogRepository {
   const service: RestaurantCatalogRepository = {
     async getCatalogById(id: string): Promise<ProductEntity[]> {
+      console.log(id);
       const response = await fetchFn!(
         `http://localhost:3000/api/restaurant-catalog?id=${id}`
       );

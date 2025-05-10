@@ -15,7 +15,7 @@
       },
       {
         "id": "2",
-        " name": "Mix",
+        "name": "Mix",
         "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
         "price": 13.99,
         "promo": false,
@@ -120,6 +120,121 @@
         "description": "",
         "price": 13.99,
         "promo": false
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "idRestaurant": "3",
+    "name": "Whopper",
+    "description": "O clássico Whopper do Burger King",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Whopper Jr.",
+        "description": "Versão menor do Whopper",
+        "price": 15.99,
+        "promo": false
+      },
+      {
+        "id": "2",
+        "name": "Whopper Duplo",
+        "description": "Whopper com dois hambúrgueres",
+        "price": 22.99,
+        "promo": true,
+        "oldPrice": 25.99
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "idRestaurant": "4",
+    "name": "Big Mac",
+    "description": "O famoso Big Mac do McDonald's",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Big Mac",
+        "description": "Sanduíche tradicional",
+        "price": 18.99,
+        "promo": false
+      },
+      {
+        "id": "2",
+        "name": "Big Mac Duplo",
+        "description": "Big Mac com dobro de carne",
+        "price": 24.99,
+        "promo": true,
+        "oldPrice": 27.99
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "idRestaurant": "5",
+    "name": "Pizza Pepperoni",
+    "description": "Pizza de pepperoni da Pizza Hut",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Média",
+        "description": "Tamanho médio",
+        "price": 39.99,
+        "promo": false
+      },
+      {
+        "id": "2",
+        "name": "Grande",
+        "description": "Tamanho grande",
+        "price": 49.99,
+        "promo": true,
+        "oldPrice": 59.99
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "idRestaurant": "6",
+    "name": "Pizza de Frango com Catupiry",
+    "description": "Pizza tradicional Domino's",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Média",
+        "description": "Tamanho médio",
+        "price": 37.99,
+        "promo": false
+      },
+      {
+        "id": "2",
+        "name": "Grande",
+        "description": "Tamanho grande",
+        "price": 47.99,
+        "promo": true,
+        "oldPrice": 55.99
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "idRestaurant": "7",
+    "name": "Yakissoba",
+    "description": "Yakissoba tradicional China in Box",
+    "variants": [
+      {
+        "id": "1",
+        "name": "Carne",
+        "description": "Yakissoba de carne",
+        "price": 29.99,
+        "promo": false
+      },
+      {
+        "id": "2",
+        "name": "Frango",
+        "description": "Yakissoba de frango",
+        "price": 27.99,
+        "promo": true,
+        "oldPrice": 32.99
       }
     ]
   }

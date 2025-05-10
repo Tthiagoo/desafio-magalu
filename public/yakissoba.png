@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="utf-8">
+  <title> O Melhor da Comida Chinesa para você | China In Box </title>
+
+  <!-- Click to Pay -->
+  <!-- production -->
+  <script src="https://src.mastercard.com/srci/integration/2/lib.js?srcDpaId=3022ada4-3ac9-4aef-942f-f68cd85b484c&amp;locale=pt_BR"> </script>
+
+  <!-- sandbox
+  <script src="https://sandbox.src.mastercard.com/srci/integration/2/lib.js?srcDpaId=8295aac7-2b4e-4fcf-b4c8-6289f2a6fcc1&locale=pt_BR"></script> -->
+
+  <script type="text/javascript" src="https://core.spreedly.com/iframe/iframe-v1.min.js"></script>
+
+  <script type="module" src="https://src.mastercard.com/srci/integration/components/src-ui-kit/src-ui-kit.esm.js"></script>
+  <link rel="stylesheet" href="https://src.mastercard.com/srci/integration/components/src-ui-kit/src-ui-kit.css">
+
+  <meta name="description" content="Conheça nosso delicioso: Yakissoba, Poke, Hot Roll, Rolinho Primavera, Macarrão Oriental e diversos pratos da culinária chinesa. Peça já no delivery!">
+  <meta name="keywords" content="chinainbox, delivery, restaurante chines, restaurante chines perto de mim, comida chinesa, comida chinesa delivery, yakisoba delivery, bao, bowls, yakisoba, macarrao oriental, hot roll, sushi delivery">
+
+  <base href="/">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUWuAs2yb7KlIvMFo_kj4IZBapLzTY_6A&amp;libraries=places&amp;language=pt-BR"></script>
+  <script src="https://accounts.google.com/gsi/client" async="" defer></script>
+
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-K6HM6HB");
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="icon" type="image/png" href="assets/china_logo_box.svg">
+  <link rel="preload" type="image/webp" as="image" href="https://cib.ws01.mobi/uploads/dd225b2efa9be0558d3312f84fbde023698.webp">
+  <link rel="preload" type="image/webp" as="image" href="https://cib.ws01.mobi/uploads/27bc846ec73604ab789b8bc69b5fc454676.webp">
+
+  <!-- Add to homescreen for iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- SDK MercadoPagos -->
+  <script src="https://sdk.mercadopago.com/js/v2" defer></script>
+
+  <noscript>
+    <p>O Google Tag Manager não está disponível porque o JavaScript está desativado no seu navegador.</p>
+  </noscript>
+
+  <!-- Meta Tags para redes sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="O Melhor da Comida Chinesa para Você | China in Box">
+  <meta property="og:description" content="Conheça nosso delicioso Yakissoba, Frango Xadrez, Macarrão Oriental, Rolinhos Primavera e Muito Mais. Faça já seu Pedido!">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="China In Box">
+  <meta property="og:image" content="https://www.chinainbox.com.br/ccstore/v1/images/?source=/file/general/logo-lg-china.png">
+  <meta property="og:url" content="https://www.chinainbox.com.br">
+  <meta name="apple-itunes-app" content="app-id=500179321, app-argument=https://apps.apple.com/us/app/china-in-box/id500179321?itsct=apps_box_link&amp;itscg=30200">
+
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    a:focus {
+      outline: 2px solid transparent;
+    }
+
+    a:focus,
+    a:hover {
+      border: 2px solid transparent;
+    }
+  </style>
+<style>:root{--ion-color-primary:#000;--ion-color-primary-rgb:56, 128, 255;--ion-color-primary-contrast:#ffffff;--ion-color-primary-contrast-rgb:255, 255, 255;--ion-color-primary-shade:#3171e0;--ion-color-primary-tint:#4c8dff;--ion-color-secondary:#E69A2A;--ion-color-secondary-rgb:61, 194, 255;--ion-color-secondary-contrast:#ffffff;--ion-color-secondary-contrast-rgb:255, 255, 255;--ion-color-secondary-shade:#36abe0;--ion-color-secondary-tint:#50c8ff;--ion-color-tertiary:#5260ff;--ion-color-tertiary-rgb:82, 96, 255;--ion-color-tertiary-contrast:#ffffff;--ion-color-tertiary-contrast-rgb:255, 255, 255;--ion-color-tertiary-shade:#4854e0;--ion-color-tertiary-tint:#6370ff;--ion-color-success:#2dd36f;--ion-color-success-rgb:45, 211, 111;--ion-color-success-contrast:#ffffff;--ion-color-success-contrast-rgb:255, 255, 255;--ion-color-success-shade:#28ba62;--ion-color-success-tint:#42d77d;--ion-color-warning:#ffc409;--ion-color-warning-rgb:255, 196, 9;--ion-color-warning-contrast:#000000;--ion-color-warning-contrast-rgb:0, 0, 0;--ion-color-warning-shade:#e0ac08;--ion-color-warning-tint:#ffca22;--ion-color-danger:#eb445a;--ion-color-danger-rgb:235, 68, 90;--ion-color-danger-contrast:#ffffff;--ion-color-danger-contrast-rgb:255, 255, 255;--ion-color-danger-shade:#cf3c4f;--ion-color-danger-tint:#ed576b;--ion-color-dark:#222428;--ion-color-dark-rgb:34, 36, 40;--ion-color-dark-contrast:#ffffff;--ion-color-dark-contrast-rgb:255, 255, 255;--ion-color-dark-shade:#1e2023;--ion-color-dark-tint:#383a3e;--ion-color-medium:#92949c;--ion-color-medium-rgb:146, 148, 156;--ion-color-medium-contrast:#ffffff;--ion-color-medium-contrast-rgb:255, 255, 255;--ion-color-medium-shade:#808289;--ion-color-medium-tint:#9d9fa6;--ion-color-light:#f4f5f8;--ion-color-light-rgb:244, 245, 248;--ion-color-light-contrast:#000000;--ion-color-light-contrast-rgb:0, 0, 0;--ion-color-light-shade:#d7d8da;--ion-color-light-tint:#f5f6f9}html{--ion-font-family:var(--ion-default-font)}body{background:var(--ion-background-color)}@supports (padding-top: 20px){html{--ion-safe-area-top:var(--ion-statusbar-padding)}}@supports (padding-top: constant(safe-area-inset-top)){html{--ion-safe-area-top:constant(safe-area-inset-top);--ion-safe-area-bottom:constant(safe-area-inset-bottom);--ion-safe-area-left:constant(safe-area-inset-left);--ion-safe-area-right:constant(safe-area-inset-right)}}@supports (padding-top: env(safe-area-inset-top)){html{--ion-safe-area-top:env(safe-area-inset-top);--ion-safe-area-bottom:env(safe-area-inset-bottom);--ion-safe-area-left:env(safe-area-inset-left);--ion-safe-area-right:env(safe-area-inset-right)}}a{touch-action:manipulation}*{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}html{width:100%;height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}html:not(.hydrated) body{display:none}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin:0;padding:0;position:fixed;width:100%;max-width:100%;height:100%;max-height:100%;transform:translateZ(0);text-rendering:optimizeLegibility;overflow:hidden;touch-action:manipulation;-webkit-user-drag:none;-ms-content-zooming:none;word-wrap:break-word;overscroll-behavior-y:none;-webkit-text-size-adjust:none;text-size-adjust:none}html{font-family:var(--ion-font-family)}a{background-color:transparent;color:var(--ion-color-primary, #3880ff)}h1,h2{margin-top:16px;margin-bottom:10px;font-weight:500;line-height:1.2}h1{margin-top:20px;font-size:26px}h2{margin-top:18px;font-size:24px}:root{--red:#96222B;--red-secondary:#e3342d;--font:"WorkSans-Regular", "WorkSans-Bold"}*{scrollbar-width:none}* ::-webkit-scrollbar{width:6px}* ::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px;background-color:#f5f5f5}* ::-webkit-scrollbar-thumb{border-radius:10px;-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);background-color:#555}a{text-decoration:none}@font-face{font-family:WorkSans-Regular;src:url(WorkSans-Regular.807b1b4d58d3f3cc.ttf)}@font-face{font-family:WorkSans-Bold;src:url(WorkSans-Bold.2309808bc001d1d7.ttf)}</style><link rel="stylesheet" href="styles.5521e3274926e0f2.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.5521e3274926e0f2.css"></noscript></head>
+
+<body>
+  <!-- Links para pular para o conteúdo principal -->
+  <a href="#menu" class="skip-link visually-hidden" accesskey="1">Ir para o Menu [Alt+1]</a>
+  <a href="#sobre" class="skip-link visually-hidden" accesskey="2">Ir para Sobre Nós [Alt+2]</a>
+  <a href="#contato" class="skip-link visually-hidden" accesskey="3">Ir para Contato [Alt+3]</a>
+
+  <!-- Estrutura de navegação -->
+  <header>
+    <h1 class="visually-hidden">China In Box</h1>
+  </header>
+
+  <main>
+    <section id="menu">
+      <h2 class="visually-hidden">Menu</h2>
+      <app-root></app-root>
+    </section>
+
+    <section id="sobre">
+      <h2 class="visually-hidden">Sobre Nós</h2>
+      <p class="visually-hidden">Informações sobre a empresa e sua história.</p>
+    </section>
+
+    <section id="contato">
+      <h2 class="visually-hidden">Contato</h2>
+      <p class="visually-hidden">Formas de contato e localização.</p>
+    </section>
+  </main>
+
+  <nav aria-label="Menu de navegação principal">
+    <ul>
+      <li class="visually-hidden"><a href="#menu" class="visually-hidden" accesskey="m">Menu [Alt+M]</a></li>
+      <li class="visually-hidden"><a href="#sobre" class="visually-hidden" accesskey="s">Sobre Nós [Alt+S]</a></li>
+      <li class="visually-hidden"><a href="#contato" class="visually-hidden" accesskey="c">Contato [Alt+C]</a></li>
+    </ul>
+  </nav>
+
+  <!-- Rodapé -->
+  <footer>
+    <p class="visually-hidden">© 2024 China In Box. Todos os direitos reservados.</p>
+    <nav aria-label="Rodapé">
+      <ul>
+        <li class="visually-hidden"><a class="visually-hidden" href="/politica-de-privacidade" accesskey="p">Política de
+            Privacidade [Alt+P]</a>
+        </li>
+        <li class="visually-hidden"><a class="visually-hidden" href="/termos-de-uso" accesskey="t">Termos de Uso
+            [Alt+T]</a></li>
+        <li class="visually-hidden"><a class="visually-hidden" href="/contato" accesskey="r">Contato [Alt+R]</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6HM6HB" height="0" width="0"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Hand Talk -->
+  <script src="https://plugin.handtalk.me/web/latest/handtalk.min.js"></script>
+  <script>
+    var ht = new HT({
+      token: "a143ac53f1e6850243497bdf9f609224",
+      avatar: "MAYA",
+      side: "right",
+      exceptions: ["#menu", "#carrousel", ".listas", ".formulario"],
+      mobileConfig: {
+        side: "right"
+      }
+    });
+  </script>
+  <!-- End Hand Talk -->
+<script src="runtime.91133b18c6e11de9.js" type="module"></script><script src="polyfills.35b3f31ee0da8331.js" type="module"></script><script src="main.059b44aa8cf8522c.js" type="module"></script>
+
+
+</body></html>

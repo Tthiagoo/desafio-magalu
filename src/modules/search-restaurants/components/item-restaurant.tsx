@@ -18,10 +18,10 @@ export default function ItemRestaurant({
   return (
     <Card
       onClick={() => {
-        open && router.push(`restaurant/${id}`);
+        if (open) router.push(`restaurant/${id}`);
       }}
       className={`flex flex-row gap-3 bg-neutral-100 p-0 rounded-lg h-full cursor-pointer ${
-        !open && "opacity-55 cursor-default"
+        !open ? "opacity-55 cursor-default" : ""
       }`}
     >
       <Image

@@ -6,62 +6,28 @@ import { formatMoney } from "@/lib/utils";
 import { ITicketEntity } from "../domain";
 import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
-import { useCartStore } from "../store";
+import { useProductHeader } from "../hooks/useCustomizations";
 
 interface IProps {
   infoHeader: ITicketEntity;
 }
 
 export default function ProductHeader({ infoHeader }: IProps) {
-  const { id: productId, inicialPrice } = infoHeader;
-
-  const items = useCartStore((s) => s.items);
-
-  const addToCart = useCartStore((s) => s.addToCart);
-  const updateItemAtIndex = useCartStore((s) => s.updateItemInCart);
-
-  const currentIndex = items.findIndex((item) => item.product.id === productId);
-  const quantity = currentIndex !== -1 ? items[currentIndex].quantity : 0;
-
-  const handleIncrement = () => {
-    const newQuantity = quantity + 1;
-    const cartItem = {
-      product: infoHeader,
-      quantity: newQuantity,
-      customizations: {},
-    };
-
-    if (currentIndex === -1) {
-      addToCart(cartItem);
-    } else {
-      updateItemAtIndex(currentIndex, cartItem);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (quantity <= 1) {
-      updateItemAtIndex(currentIndex, {
-        product: infoHeader,
-        quantity: 0,
-        customizations: {},
-      });
-    } else {
-      updateItemAtIndex(currentIndex, {
-        product: infoHeader,
-        quantity: quantity - 1,
-        customizations: {},
-      });
-    }
-  };
+  const { quantity, handleIncrement, handleDecrement } =
+    useProductHeader(infoHeader);
+  const { inicialPrice } = infoHeader;
 
   return (
     <>
-      <Image
-        alt="imagem do prato"
-        src={infoHeader.image}
-        width={390}
-        height={195}
-      />
+      <div className="w-full flex justify-center">
+        <Image
+          className=" sm:rounded-lg"
+          alt="imagem do prato"
+          src={infoHeader.image}
+          width={390}
+          height={195}
+        />
+      </div>
       <div className="px-4">
         <h1 className="mt-4 text-neutral-700 text-xl font-bold">
           {infoHeader.name}
@@ -72,7 +38,6 @@ export default function ProductHeader({ infoHeader }: IProps) {
             {formatMoney(inicialPrice)}
           </span>
         </div>
-        <p className="text-neutral-500 mt-1">{"sanduioche de frango"}</p>
 
         <div className="pt-2 mt-2 border-b-4 pb-5">
           <div className="flex h-12 items-center justify-between mt-1">

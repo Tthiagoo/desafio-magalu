@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 import { useSearchParams, useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ export function useFilterRestaurants() {
     }, 200);
 
     return () => clearTimeout(delayDebounce);
-  }, [search]);
+  }, [search, router, searchParams]);
   return { search, setSearch };
 }
 
