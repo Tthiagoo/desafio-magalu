@@ -1,5 +1,6 @@
 import { ITicketEntity } from "../domain";
-import { useCartStore } from "../store";
+import { useCartStore } from "../store/cart";
+
 import { CustomizationOption, IProductCustomization } from "../types";
 import { useCallback, useEffect } from "react";
 

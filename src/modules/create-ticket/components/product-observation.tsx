@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useCartStore } from "../store";
+import { useCartStore } from "../store/cart";
 import { Label } from "@/ui/label";
 import { Textarea } from "@/ui/textarea";
 
