@@ -1,83 +1,10 @@
 "use client";
 import React from "react";
 import { Pencil, Plus, Minus } from "lucide-react";
-import { CartItem } from "@/modules/create-ticket/types";
+import type { CartItemFromStore } from "@/modules/create-ticket/types";
+import { renderAllOptions } from "./render-options";
 
-// export interface TicketProductItemProps {
-//   product: {
-//     name: string;
-//     price: number;
-//     quantity: number;
-//     options?: string[];
-//     observation?: string;
-//   };
-// }
-
-export function TicketProductItem({
-  product,
-  customizations,
-  quantity,
-  observation,
-}: CartItem) {
-  console.log("cart item product", product);
-
-  function renderOption(opt: string) {
-    const match = opt.match(/(.+?)(\s*\+R\$[\d,.]+)/);
-    if (match) {
-      return (
-        <span>
-          {match[1]}
-          <span className="text-teal-600 font-semibold">{match[2]}</span>
-        </span>
-      );
-    }
-    return opt;
-  }
-
-  function renderOptions(options: string[]) {
-    return options.map((opt, i) => {
-      if (opt.includes("?")) {
-        const [main, sub] = opt.split("?");
-        return (
-          <div key={i} className="flex flex-col ml-1">
-            <span className="flex items-center gap-1 text-neutral-700">
-              <span className="text-neutral-400">•</span>
-              <span>{main.trim()}?</span>
-            </span>
-            <span className="ml-4 text-neutral-400 flex items-center gap-1">
-              {renderOption(sub.trim())}
-            </span>
-          </div>
-        );
-      }
-      if (opt.match(/\+R\$/)) {
-        return (
-          <div key={i} className="flex items-center gap-1 ml-1">
-            <span className="text-neutral-400">•</span>
-            {renderOption(opt)}
-          </div>
-        );
-      }
-      if (
-        opt.match(/^[a-zA-Zãáéíóúçêôûõâêîôû ]+$/) &&
-        i > 0 &&
-        options[i - 1].includes("escolha")
-      ) {
-        return (
-          <div key={i} className="ml-7 text-neutral-500">
-            {opt}
-          </div>
-        );
-      }
-      return (
-        <div key={i} className="flex items-center gap-1 ml-1">
-          <span className="text-neutral-400">•</span>
-          <span>{opt}</span>
-        </div>
-      );
-    });
-  }
-
+export function TicketProductItem(product: CartItemFromStore) {
   return (
     <div className="border-b border-neutral-200 pb-4 mb-2 last:border-b-0 last:pb-0 last:mb-0">
       <div className="flex items-start gap-3">
@@ -110,7 +37,7 @@ export function TicketProductItem({
             </div>
           </div>
           <div className="text-xs text-neutral-700 mt-1 space-y-0.5">
-            {product.options && renderOptions(product.options)}
+            {product.options && renderAllOptions(product.options, product)}
             {product.observation && (
               <div className="bg-neutral-100 rounded px-2 py-1 mt-1 text-xs text-neutral-700 border border-neutral-200">
                 <span className="font-semibold">observação:</span>{" "}

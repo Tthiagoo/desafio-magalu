@@ -41,3 +41,20 @@ export type CartItem = {
   customizations: AppliedCustomizations;
   observation?: string;
 };
+
+export interface CartItemFromStore {
+  id: string;
+  productId: string;
+  idRestaurant: string;
+  imageRestaurant: string;
+  nameRestaurant: string;
+  product: {
+    id: string;
+    name: string;
+    image: string;
+    inicialPrice: number;
+  };
+  quantity: number;
+  options?: string[];
+  observation?: string;
+}
