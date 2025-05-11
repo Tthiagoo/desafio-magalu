@@ -1,3 +1,4 @@
+import { useMemo, useCallback } from "react";
 import {
   isAppliedCustomizations,
   useApplyCustomization,
@@ -15,31 +16,42 @@ export function useMultiCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-  const currentCustomizations: AppliedCustomizations = isAppliedCustomizations(
-    item?.customizations
-  )
-    ? (item?.customizations as AppliedCustomizations)
-    : {};
-  const currentOptions: CustomizationOption[] = Array.isArray(
-    currentCustomizations[customization.id]?.value
-  )
-    ? (currentCustomizations[customization.id]?.value as CustomizationOption[])
-    : [];
-  const isOptionChecked = (option: CustomizationOption) =>
-    currentOptions.some((opt) => opt.id === option.id);
-  const toggleOption = (option: CustomizationOption) => {
-    let updatedOptions: CustomizationOption[] = [];
-    if (isOptionChecked(option)) {
-      updatedOptions = currentOptions.filter((opt) => opt.id !== option.id);
-    } else {
-      updatedOptions = [...currentOptions, option];
-    }
-    applyCustomization(
+
+  const currentOptions: CustomizationOption[] = useMemo(() => {
+    if (!isAppliedCustomizations(item?.customizations)) return [];
+    const value = (item?.customizations as AppliedCustomizations)[
+      customization.id
+    ]?.value;
+    return Array.isArray(value) ? (value as CustomizationOption[]) : [];
+  }, [item?.customizations, customization.id]);
+
+  const isOptionChecked = useCallback(
+    (option: CustomizationOption) =>
+      currentOptions.some((opt) => opt.id === option.id),
+    [currentOptions]
+  );
+
+  const toggleOption = useCallback(
+    (option: CustomizationOption) => {
+      const updatedOptions = isOptionChecked(option)
+        ? currentOptions.filter((opt) => opt.id !== option.id)
+        : [...currentOptions, option];
+      applyCustomization(
+        productId,
+        customization.id,
+        updatedOptions,
+        customization.title
+      );
+    },
+    [
+      isOptionChecked,
+      currentOptions,
+      applyCustomization,
       productId,
       customization.id,
-      updatedOptions,
-      customization.title
-    );
-  };
+      customization.title,
+    ]
+  );
+
   return { isOptionChecked, toggleOption };
 }

@@ -8,7 +8,6 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
   const removeItem = useCartStore((s) => s.removeItem);
   const setInfoRestaurant = useCartStore((s) => s.setInfoRestaurant);
 
-  // Memoize the cart item for this product
   const cartItem = useMemo(
     () => items.find((item) => item.product.id === product.id),
     [items, product.id]
