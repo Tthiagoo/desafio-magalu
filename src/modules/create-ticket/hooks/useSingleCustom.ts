@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   IProductCustomization,
   AppliedCustomizations,
@@ -16,20 +16,23 @@ export function useSingleCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
+
+  const currentSelectedId = useMemo(() => {
+    if (!isAppliedCustomizations(item?.customizations)) return undefined;
+    const customizations = item?.customizations as AppliedCustomizations;
+    const value = customizations[customization.id]?.value as
+      | CustomizationOption
+      | undefined;
+    return value?.id;
+  }, [item?.customizations, customization.id]);
+
   const [selectedOptionId, setSelectedOptionId] = useState<string | undefined>(
     customization.options[0]?.id
   );
 
   useEffect(() => {
-    // Usa apenas a primeira opção como default
     const defaultOption = customization.options[0];
-    const customizations = isAppliedCustomizations(item?.customizations)
-      ? (item?.customizations as AppliedCustomizations)
-      : {};
-    const currentValue = customizations[customization.id]?.value as
-      | CustomizationOption
-      | undefined;
-    if (!currentValue && defaultOption) {
+    if (!currentSelectedId && defaultOption) {
       applyCustomization(
         productId,
         customization.id,
@@ -37,15 +40,16 @@ export function useSingleCustomization(
         customization.title
       );
       setSelectedOptionId(defaultOption.id);
-    } else if (currentValue && (currentValue as CustomizationOption).id) {
-      setSelectedOptionId((currentValue as CustomizationOption).id);
+    } else if (currentSelectedId) {
+      setSelectedOptionId(currentSelectedId);
     }
   }, [
-    item,
-    customization.id,
+    currentSelectedId,
     customization.options,
+    customization.id,
     customization.title,
     productId,
+    applyCustomization,
   ]);
 
   const handleSelectOption = useCallback(
