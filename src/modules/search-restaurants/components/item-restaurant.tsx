@@ -1,3 +1,4 @@
+'use client"';
 import { Card } from "@/ui/card";
 import React from "react";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import { Bike } from "lucide-react";
 import { RestaurantEntity } from "../domain";
 import { useRouter } from "next/navigation";
 import { formatMoney } from "@/lib/utils";
+import { useCartStore } from "@/modules/create-ticket/store/cart";
 export default function ItemRestaurant({
   id,
   name,
@@ -15,10 +17,22 @@ export default function ItemRestaurant({
   open,
 }: RestaurantEntity) {
   const router = useRouter();
+  const items = useCartStore((s) => s.items);
+  const clearCart = useCartStore((s) => s.clearCart);
+
   return (
     <Card
       onClick={() => {
-        if (open) router.push(`restaurant/${id}`);
+        if (!open) return;
+        if (items.length > 0) {
+          const confirmClear = window.confirm(
+            "Você já possui itens no carrinho. Deseja limpar o carrinho para escolher outro restaurante?"
+          );
+          if (!confirmClear) return;
+          clearCart();
+        }
+
+        router.push(`restaurant/${id}`);
       }}
       className={`flex flex-row gap-3 bg-neutral-100 p-0 rounded-lg h-full cursor-pointer ${
         !open ? "opacity-55 cursor-default" : ""

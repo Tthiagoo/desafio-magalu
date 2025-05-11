@@ -31,7 +31,6 @@ export const useCartStore = create(
       items: [],
       infoRestaurant: null,
       addToCart: (item) => {
-       
         set((state) => ({
           items: [...state.items, item],
         }));
@@ -57,6 +56,7 @@ export const useCartStore = create(
       },
       clearCart: () => {
         set({ items: [] });
+        set({ infoRestaurant: null });
       },
       setInfoRestaurant: (restaurantInfo) => {
         set({ infoRestaurant: restaurantInfo });
