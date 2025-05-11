@@ -1,3 +1,4 @@
+import { base_url } from "../../../../api";
 import { ITicketRepository, ITicketEntity } from "../domain";
 
 export function serviceTicket(
@@ -7,7 +8,7 @@ export function serviceTicket(
     createTicket() {},
     async getCustomizationByProductId(id: string): Promise<ITicketEntity> {
       const response = await fetchFn!(
-        `http://localhost:3000/api/productCustomization?id=${id}`
+        `${base_url}/productCustomization?id=${id}`
       );
       return await response.json();
     },

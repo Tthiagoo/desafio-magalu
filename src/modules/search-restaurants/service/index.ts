@@ -1,3 +1,4 @@
+import { base_url } from "../../../../api";
 import { RestaurantRepository, RestaurantEntity } from "../domain";
 
 export function RestaurantService(
@@ -5,7 +6,7 @@ export function RestaurantService(
 ): RestaurantRepository {
   const service: RestaurantRepository = {
     async getAll(): Promise<RestaurantEntity[]> {
-      const response = await fetchFn!("http://localhost:3000/api/restaurants");
+      const response = await fetchFn!(`${base_url}/restaurants`);
       return await response.json();
     },
     getByName(
