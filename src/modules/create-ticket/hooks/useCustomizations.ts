@@ -1,7 +1,17 @@
 import { useCartStore } from "../store/cart";
 
-import { CustomizationOption, IProductCustomization } from "../types";
+import {
+  CustomizationOption,
+  IProductCustomization,
+  AppliedCustomizations,
+  AppliedCustomizationEntry,
+} from "../types";
 import { useCallback, useEffect, useState } from "react";
+
+type CustomizationQuantityValue = Record<
+  string,
+  { label: string; quantity: number; price?: number }
+>;
 
 function useCartProductItem(productId: string) {
   return useCartStore(
@@ -18,23 +28,30 @@ function useApplyCustomization() {
   return (
     productId: string,
     customizationId: string,
-    value: unknown,
+    value:
+      | CustomizationOption
+      | CustomizationOption[]
+      | Record<string, { label: string; quantity: number; price?: number }>,
     title: string
   ) => {
     const currentItem = item.find((i) => i.product.id === productId);
     if (!currentItem) return;
-    const updatedProduct = { ...currentItem.product };
+    // eslint-disable-next-line prefer-const
+    let updatedProduct = { ...currentItem.product };
 
     if (
       (title.toLowerCase().includes("tamanho") ||
         title.toLowerCase().includes("size")) &&
       value &&
-      (value as any).price
+      typeof (value as CustomizationOption).price !== "undefined"
     ) {
-      updatedProduct.price = (value as any).price;
+      updatedProduct.price =
+        (value as CustomizationOption).price ?? updatedProduct.price;
     }
-    const customizations = {
-      ...currentItem.customizations,
+    const customizations: AppliedCustomizations = {
+      ...(isAppliedCustomizations(currentItem.customizations)
+        ? (currentItem.customizations as AppliedCustomizations)
+        : {}),
       [customizationId]: { value, title },
     };
     updateItem(productId, {
@@ -45,16 +62,28 @@ function useApplyCustomization() {
   };
 }
 
+function isAppliedCustomizations(obj: unknown): obj is AppliedCustomizations {
+  if (!obj || typeof obj !== "object") return false;
+  return Object.values(obj).every(
+    (entry) =>
+      entry && typeof entry === "object" && "title" in entry && "value" in entry
+  );
+}
+
 export function useSingleCustomization(
   productId: string,
   customization: IProductCustomization
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-  const currentCustomizations = item?.customizations || {};
-  const selectedOption =
-    (currentCustomizations[customization.id]?.value as CustomizationOption) ||
-    undefined;
+  const currentCustomizations: AppliedCustomizations = isAppliedCustomizations(
+    item?.customizations
+  )
+    ? (item?.customizations as AppliedCustomizations)
+    : {};
+  const selectedOption = currentCustomizations[customization.id]?.value as
+    | CustomizationOption
+    | undefined;
   const handleChange = (label: string) => {
     const option = customization.options.find((o) => o.label === label);
     if (option) {
@@ -82,7 +111,12 @@ export function useSingleCustomizationV2(
   useEffect(() => {
     // Usa apenas a primeira opção como default
     const defaultOption = customization.options[0];
-    const currentValue = item?.customizations?.[customization.id]?.value;
+    const customizations = isAppliedCustomizations(item?.customizations)
+      ? (item?.customizations as AppliedCustomizations)
+      : {};
+    const currentValue = customizations[customization.id]?.value as
+      | CustomizationOption
+      | undefined;
     if (!currentValue && defaultOption) {
       applyCustomization(
         productId,
@@ -91,8 +125,8 @@ export function useSingleCustomizationV2(
         customization.title
       );
       setSelectedOptionId(defaultOption.id);
-    } else if (currentValue && currentValue.id) {
-      setSelectedOptionId(currentValue.id);
+    } else if (currentValue && (currentValue as CustomizationOption).id) {
+      setSelectedOptionId((currentValue as CustomizationOption).id);
     }
   }, [
     item,
@@ -100,7 +134,6 @@ export function useSingleCustomizationV2(
     customization.options,
     customization.title,
     productId,
-    applyCustomization,
   ]);
 
   const handleSelectOption = useCallback(
@@ -128,7 +161,11 @@ export function useMultiCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-  const currentCustomizations = item?.customizations || {};
+  const currentCustomizations: AppliedCustomizations = isAppliedCustomizations(
+    item?.customizations
+  )
+    ? (item?.customizations as AppliedCustomizations)
+    : {};
   const currentOptions: CustomizationOption[] = Array.isArray(
     currentCustomizations[customization.id]?.value
   )
@@ -159,7 +196,11 @@ export function useQuantityCustomization(
 ) {
   const item = useCartProductItem(productId);
   const applyCustomization = useApplyCustomization();
-  const currentCustomizations = item?.customizations || {};
+  const currentCustomizations: AppliedCustomizations = isAppliedCustomizations(
+    item?.customizations
+  )
+    ? (item?.customizations as AppliedCustomizations)
+    : {};
   const handleIncrement = (optionId: string) => {
     const quantityObj =
       (currentCustomizations[customization.id]?.value as Record<

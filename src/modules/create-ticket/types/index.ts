@@ -15,6 +15,7 @@ export type BaseCustomization = {
   options: CustomizationOption[];
   min?: number;
   max?: number;
+  value: number;
 };
 
 export type IProductCustomization = BaseCustomization;
