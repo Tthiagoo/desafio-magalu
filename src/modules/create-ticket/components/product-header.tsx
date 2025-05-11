@@ -6,7 +6,7 @@ import { formatMoney } from "@/lib/utils";
 import { ITicketEntity } from "../domain";
 import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
-
+import { useParams } from "next/navigation";
 import { useCartStore } from "../store/cart";
 import { useProductQuantitySelector } from "../hooks";
 
@@ -15,9 +15,12 @@ interface IProps {
 }
 
 export default function ProductHeader({ infoHeader }: IProps) {
+  const params = useParams();
+  const restaurantId = params.id;
   const restaurantInfo = {
     name: infoHeader.nameRestaurant,
     image: infoHeader.imageRestaurant,
+    id: restaurantId,
   };
 
   const cartItem = useCartStore(

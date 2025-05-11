@@ -1,4 +1,4 @@
-'use client"';
+"use client";
 import { Card } from "@/ui/card";
 import React from "react";
 import Image from "next/image";
@@ -19,14 +19,17 @@ export default function ItemRestaurant({
   const router = useRouter();
   const items = useCartStore((s) => s.items);
   const clearCart = useCartStore((s) => s.clearCart);
+  const infoRestaurant = useCartStore((s) => s.infoRestaurant);
+  const setInfoRestaurant = useCartStore((s) => s.setInfoRestaurant);
 
   return (
     <Card
       onClick={() => {
         if (!open) return;
-        if (items.length > 0) {
+
+        if (items.length > 0 && infoRestaurant && infoRestaurant.id !== id) {
           const confirmClear = window.confirm(
-            "Você já possui itens no carrinho. Deseja limpar o carrinho para escolher outro restaurante?"
+            "Você já possui itens no carrinho de outro restaurante. Deseja limpar o carrinho para escolher este restaurante?"
           );
           if (!confirmClear) return;
           clearCart();
