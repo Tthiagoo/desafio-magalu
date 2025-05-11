@@ -22,7 +22,7 @@
         "from": true
       },
       {
-        "id": "10",
+        "id": "3",
         "name": "Filadélfia",
         "description": "Arroz, salmão fresco, cream cheese e cebolinha",
         "price": 13.99,
@@ -37,27 +37,20 @@
     "description": "bolinho de arroz com pele de peixe",
     "variants": [
       {
-        "id": "1",
-        "name": "Califórnia",
+        "id": "4",
+        "name": "Salmão",
         "description": "Kani, pepino e maçã ou manga",
         "price": 13.99,
         "oldPrice": 17.0,
         "promo": true
       },
       {
-        "id": "2",
-        "name": "Mix",
+        "id": "5",
+        "name": "Atum",
         "description": "Escolha 3 ingredientes: shimeji, alface americana, rúcula, pepino, tomate seco, cream cheese...",
         "price": 13.99,
         "promo": false,
         "from": true
-      },
-      {
-        "id": "3",
-        "name": "Filadélfia",
-        "description": "Arroz, salmão fresco, cream cheese e cebolinha",
-        "price": 13.99,
-        "promo": false
       }
     ]
   },
@@ -68,7 +61,7 @@
     "description": "Escolha seu sanduiche e montamos pra você",
     "variants": [
       {
-        "id": "1",
+        "id": "7",
         "name": "Frango",
         "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Frango Grelhado",
         "price": 13.99,
@@ -76,7 +69,7 @@
         "promo": true
       },
       {
-        "id": "2",
+        "id": "8",
         "name": "Frango Defumado",
         "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Frango Defumado com Cream Cheese.",
         "price": 13.99,
@@ -84,7 +77,7 @@
         "from": true
       },
       {
-        "id": "3",
+        "id": "9",
         "name": "Steak Churrasco",
         "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Steak de Churrasco, cheio de suculência e sabor",
         "price": 13.99,
@@ -92,37 +85,7 @@
       }
     ]
   },
-  {
-    "id": "4",
-    "idRestaurant": "2",
-    "name": "Bebidas",
-    "description": "Escolha seu sanduiche e montamos pra você",
-    "variants": [
-      {
-        "id": "1",
-        "name": "Agua",
-        "description": "",
-        "price": 13.99,
-        "oldPrice": 17.0,
-        "promo": true
-      },
-      {
-        "id": "2",
-        "name": "Refrigerante",
-        "description": "",
-        "price": 13.99,
-        "promo": false,
-        "from": true
-      },
-      {
-        "id": "3",
-        "name": "Suco",
-        "description": "",
-        "price": 13.99,
-        "promo": false
-      }
-    ]
-  },
+
   {
     "id": "5",
     "idRestaurant": "3",
@@ -130,14 +93,14 @@
     "description": "O clássico Whopper do Burger King",
     "variants": [
       {
-        "id": "1",
+        "id": "13",
         "name": "Whopper Jr.",
         "description": "Versão menor do Whopper",
         "price": 15.99,
         "promo": false
       },
       {
-        "id": "2",
+        "id": "14",
         "name": "Whopper Duplo",
         "description": "Whopper com dois hambúrgueres",
         "price": 22.99,
@@ -153,14 +116,14 @@
     "description": "O famoso Big Mac do McDonald's",
     "variants": [
       {
-        "id": "1",
+        "id": "15",
         "name": "Big Mac",
         "description": "Sanduíche tradicional",
         "price": 18.99,
         "promo": false
       },
       {
-        "id": "2",
+        "id": "16",
         "name": "Big Mac Duplo",
         "description": "Big Mac com dobro de carne",
         "price": 24.99,
@@ -173,20 +136,20 @@
     "id": "7",
     "idRestaurant": "5",
     "name": "Pizza Pepperoni",
-    "description": "Pizza de pepperoni da Pizza Hut",
+    "description": "A clássica e irresistível! Molho de tomate artesanal, mussarela derretida e generosas fatias de pepperoni levemente picante, assada até ficar dourada e crocante. Perfeita para quem gosta de sabor marcante e tradicional.",
     "variants": [
       {
-        "id": "1",
-        "name": "Média",
-        "description": "Tamanho médio",
-        "price": 39.99,
+        "id": "17",
+        "name": "Defumada",
+        "description": "Molho de tomate rústico, mussarela cremosa e fatias generosas de pepperoni defumado",
+        "price": 29.99,
         "promo": false
       },
       {
-        "id": "2",
-        "name": "Grande",
-        "description": "Tamanho grande",
-        "price": 49.99,
+        "id": "18",
+        "name": "Vegetariana",
+        "description": "Molho de tomate fresco, mussarela derretida e uma seleção de legumes grelhados: pimentões, cebola roxa, tomate-cereja, champignon e abobrinha. Finalizada com orégano e um fio de azeite extra virgem.",
+        "price": 39.99,
         "promo": true,
         "oldPrice": 59.99
       }
@@ -199,16 +162,16 @@
     "description": "Pizza tradicional Domino's",
     "variants": [
       {
-        "id": "1",
-        "name": "Média",
-        "description": "Tamanho médio",
+        "id": "19",
+        "name": "Frango com Catupiry Tradicional",
+        "description": "Molho de tomate, frango desfiado temperado, Catupiry cremoso e um toque de orégano. Simples e irresistível.",
         "price": 37.99,
         "promo": false
       },
       {
-        "id": "2",
-        "name": "Grande",
-        "description": "Tamanho grande",
+        "id": "20",
+        "name": "Frango com Catupiry e Milho",
+        "description": "A clássica com um toque especial: frango desfiado, Catupiry original e grãos de milho doce para equilibrar o sabor.",
         "price": 47.99,
         "promo": true,
         "oldPrice": 55.99
@@ -222,14 +185,14 @@
     "description": "Yakissoba tradicional China in Box",
     "variants": [
       {
-        "id": "1",
+        "id": "21",
         "name": "Carne",
         "description": "Yakissoba de carne",
         "price": 29.99,
         "promo": false
       },
       {
-        "id": "2",
+        "id": "22",
         "name": "Frango",
         "description": "Yakissoba de frango",
         "price": 27.99,

@@ -120,7 +120,7 @@
     ]
   },
   {
-    "id": "10",
+    "id": "3",
     "productId": "1",
     "idRestaurant": "1",
     "imageRestaurant": "/images-restaurants/matsuri.png",
@@ -180,11 +180,120 @@
     ]
   },
   {
-    "id": "3",
+    "id": "4",
+    "productId": "2",
+    "idRestaurant": "1",
+    "imageRestaurant": "/images-restaurants/matsuri.png",
+    "nameRestaurant": "Matsuri Concept",
+    "name": "Niguiri De Salmão",
+    "image": "/niguiri-salmao.jpg",
+    "description": "Kani, pepino e maçã ou manga",
+    "price": 13.99,
+    "customization": [
+      {
+        "id": "201",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Gengibre", "price": 0, "id": "add_gengibre" },
+          { "label": "Wasabi", "price": 0, "id": "add_wasabi" },
+          { "label": "Cream cheese", "price": 2.0, "id": "add_creamcheese" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "productId": "2",
+    "idRestaurant": "1",
+    "imageRestaurant": "/images-restaurants/matsuri.png",
+    "nameRestaurant": "Matsuri Concept",
+    "name": "Niguiri De Atum",
+    "image": "/niguiri-atum.png",
+    "description": "",
+    "price": 13.99,
+    "customization": [
+      {
+        "id": "202",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Gengibre", "price": 0, "id": "add_gengibre" },
+          { "label": "Wasabi", "price": 0, "id": "add_wasabi" },
+          { "label": "Cream cheese", "price": 2.0, "id": "add_creamcheese" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "13",
     "productId": "5",
-    "name": "Whopper Burger King",
-    "image": "/pizza-frango-catupiry.png",
-    "description": "O clássico Whopper do Burger King",
+    "idRestaurant": "3",
+    "imageRestaurant": "/images-restaurants/burgerking.png",
+    "nameRestaurant": "Burger King",
+    "name": "Whopper Jr. Burger King",
+    "image": "/whopper-jr.jpg",
+    "description": "Versão menor do Whopper",
+    "price": 15.99,
+    "customization": [
+      {
+        "id": "302",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Bacon", "price": 3.0, "id": "add_bacon" },
+          { "label": "Queijo extra", "price": 2.0, "id": "add_queijo" },
+          { "label": "Cebola crispy", "price": 2.5, "id": "add_cebola" }
+        ]
+      },
+      {
+        "id": "303",
+        "title": "Molhos extras",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Ketchup", "price": 0, "id": "ketchup" },
+          { "label": "Mostarda", "price": 0, "id": "mostarda" }
+        ]
+      },
+      {
+        "id": "304",
+        "title": "Bebidas",
+        "type": "quantity",
+        "required": false,
+        "options": [
+          { "label": "Coca-Cola", "price": 5.0, "id": "coca_cola" },
+          { "label": "Fanta Laranja", "price": 5.0, "id": "fanta_laranja" },
+          {
+            "label": "Guaraná Antarctica",
+            "price": 5.0,
+            "id": "guarana_antarctica"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "productId": "5",
+    "idRestaurant": "3",
+    "imageRestaurant": "/images-restaurants/burgerking.png",
+    "nameRestaurant": "Burger King",
+    "name": "Whopper Duplo Burger King",
+    "image": "/whopper-duplo.jpg",
+    "description": "Whopper com dois hambúrgueres",
     "price": 22.99,
     "customization": [
       {
@@ -199,16 +308,31 @@
           { "label": "Queijo extra", "price": 2.0, "id": "add_queijo" },
           { "label": "Cebola crispy", "price": 2.5, "id": "add_cebola" }
         ]
+      },
+      {
+        "id": "303",
+        "title": "Molhos extras",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Ketchup", "price": 0, "id": "ketchup" },
+          { "label": "Mostarda", "price": 0, "id": "mostarda" }
+        ]
       }
     ]
   },
   {
-    "id": "4",
+    "id": "15",
     "productId": "6",
+    "idRestaurant": "4",
+    "imageRestaurant": "/images-restaurants/mcdonalds.png",
+    "nameRestaurant": "McDonald's",
     "name": "Big Mac McDonald's",
-    "image": "/pizza-frango-catupiry.png",
-    "price": 24.99,
-    "description": "O famoso Big Mac do McDonald's",
+    "image": "/bigmac.jpg",
+    "description": "Sanduíche tradicional",
+    "price": 18.99,
     "customization": [
       {
         "id": "402",
@@ -221,15 +345,126 @@
           { "label": "Molho especial", "price": 1.5, "id": "molho_especial" },
           { "label": "Barbecue", "price": 1.5, "id": "molho_bbq" }
         ]
+      },
+      {
+        "id": "403",
+        "title": "Bebidas",
+        "type": "quantity",
+        "required": false,
+        "options": [
+          { "label": "Coca-Cola", "price": 5.0, "id": "coca_cola" },
+          { "label": "Fanta Laranja", "price": 5.0, "id": "fanta_laranja" },
+          {
+            "label": "Guaraná Antarctica",
+            "price": 5.0,
+            "id": "guarana_antarctica"
+          }
+        ]
+      },
+      {
+        "id": "404",
+        "title": "Acompanhamentos",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Batata frita", "price": 5.0, "id": "batata_frita" },
+          { "label": "Onion rings", "price": 6.0, "id": "onion_rings" }
+        ]
       }
     ]
   },
   {
-    "id": "5",
+    "id": "16",
+    "productId": "6",
+    "idRestaurant": "4",
+    "imageRestaurant": "/images-restaurants/mcdonalds.png",
+    "nameRestaurant": "McDonald's",
+    "name": "Big Mac Duplo McDonald's",
+    "image": "/bigmac-duplo.jpg",
+    "description": "Big Mac com dobro de carne",
+    "price": 24.99,
+    "customization": [
+      {
+        "id": "402",
+        "title": "Molhos extras",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Molho especial", "price": 1.5, "id": "molho_especial" },
+          { "label": "Barbecue", "price": 1.5, "id": "molho_bbq" }
+        ]
+      },
+      {
+        "id": "403",
+        "title": "Bebidas",
+        "type": "quantity",
+        "required": false,
+        "options": [
+          { "label": "Coca-Cola", "price": 5.0, "id": "coca_cola" },
+          { "label": "Fanta Laranja", "price": 5.0, "id": "fanta_laranja" },
+          {
+            "label": "Guaraná Antarctica",
+            "price": 5.0,
+            "id": "guarana_antarctica"
+          }
+        ]
+      },
+      {
+        "id": "404",
+        "title": "Acompanhamentos",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Batata frita", "price": 5.0, "id": "batata_frita" },
+          { "label": "Onion rings", "price": 6.0, "id": "onion_rings" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "17",
     "productId": "7",
-    "name": "Pizza Pepperoni Pizza Hut",
-    "image": "/pizza-pepperoni.png",
-    "description": "Pizza de pepperoni da Pizza Hut",
+    "idRestaurant": "5",
+    "imageRestaurant": "/images-restaurants/pizzahut.png",
+    "nameRestaurant": "Pizza Hut",
+    "name": "Pizza Pepperoni Defumada",
+    "image": "/pizza-pepperoni.jpg",
+    "description": "Molho de tomate rústico, mussarela cremosa e fatias generosas de pepperoni defumado",
+    "price": 29.99,
+    "customization": [
+      {
+        "id": "501",
+        "title": "Tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Média", "price": 29.99, "id": "1" },
+          {
+            "label": "Grande",
+            "price": 49.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 59.99
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "productId": "7",
+    "idRestaurant": "5",
+    "imageRestaurant": "/images-restaurants/pizzahut.png",
+    "nameRestaurant": "Pizza Hut",
+    "name": "Pizza Pepperoni Vegetariana",
+    "image": "/pizza-pepperoni.jpg",
+    "description": "Molho de tomate fresco, mussarela derretida e uma seleção de legumes grelhados: pimentões, cebola roxa, tomate-cereja, champignon e abobrinha. Finalizada com orégano e um fio de azeite extra virgem.",
     "price": 39.99,
     "customization": [
       {
@@ -247,25 +482,18 @@
             "oldPrice": 59.99
           }
         ]
-      },
-      {
-        "id": "502",
-        "title": "Borda recheada?",
-        "type": "single",
-        "required": false,
-        "options": [
-          { "label": "Sim", "price": 7.0, "id": "borda_sim" },
-          { "label": "Não", "price": 0, "id": "borda_nao" }
-        ]
       }
     ]
   },
   {
-    "id": "6",
+    "id": "19",
     "productId": "8",
-    "name": "Pizza Frango com Catupiry Domino's",
-    "image": "/pizza-frango-catupiry.png",
-    "description": "Pizza tradicional Domino's",
+    "idRestaurant": "6",
+    "imageRestaurant": "/images-restaurants/dominos.png",
+    "nameRestaurant": "Domino's",
+    "name": "Pizza Frango com Catupiry Tradicional",
+    "image": "/pizza-frango-catupiry.jpg",
+    "description": "Molho de tomate, frango desfiado temperado, Catupiry cremoso e um toque de orégano. Simples e irresistível.",
     "price": 37.99,
     "customization": [
       {
@@ -299,26 +527,70 @@
     ]
   },
   {
-    "id": "7",
+    "id": "20",
+    "productId": "8",
+    "idRestaurant": "6",
+    "imageRestaurant": "/images-restaurants/dominos.png",
+    "nameRestaurant": "Domino's",
+    "name": "Pizza Frango com Catupiry com milho",
+    "image": "/pizza-frango-catupiry.jpg",
+    "description": "A clássica com um toque especial: frango desfiado, Catupiry original e grãos de milho doce para equilibrar o sabor.",
+    "price": 37.99,
+    "customization": [
+      {
+        "id": "601",
+        "title": "Tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Média", "price": 37.99, "id": "1" },
+          {
+            "label": "Grande",
+            "price": 47.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 55.99
+          }
+        ]
+      },
+      {
+        "id": "602",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Catupiry extra", "price": 4.0, "id": "catupiry_extra" },
+          { "label": "Bacon", "price": 3.0, "id": "bacon" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "21",
     "productId": "9",
-    "name": "Yakissoba China in Box",
-    "image": "/yakissoba.png",
-    "description": "Yakissoba tradicional China in Box",
+    "idRestaurant": "7",
+    "imageRestaurant": "/images-restaurants/chinainbox.png",
+    "nameRestaurant": "China in Box",
+    "name": "Yakissoba Carne China in Box",
+    "image": "/yakissoba-carne.png",
+    "description": "Yakissoba de carne",
     "price": 29.99,
     "customization": [
       {
         "id": "701",
-        "title": "Tipo de carne",
+        "title": "Tamanho",
         "type": "single",
         "required": true,
         "options": [
-          { "label": "Carne", "price": 29.99, "id": "1" },
+          { "label": "Medio", "price": 29.99, "id": "1" },
           {
-            "label": "Frango",
-            "price": 27.99,
+            "label": "Grande",
+            "price": 37.99,
             "id": "2",
             "hasPromotion": true,
-            "oldPrice": 32.99
+            "oldPrice": 47.99
           }
         ]
       },
@@ -332,6 +604,125 @@
         "options": [
           { "label": "Legumes", "price": 0, "id": "legumes" },
           { "label": "Shoyu extra", "price": 1.0, "id": "shoyu_extra" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "productId": "9",
+    "idRestaurant": "7",
+    "imageRestaurant": "/images-restaurants/chinainbox.png",
+    "nameRestaurant": "China in Box",
+    "name": "Yakissoba Frango China in Box",
+    "image": "/yakissoba-frango.png",
+    "description": "Yakissoba de frango",
+    "price": 29.99,
+    "customization": [
+      {
+        "id": "701",
+        "title": "Tamanho",
+        "type": "single",
+        "required": true,
+        "options": [
+          { "label": "Medio", "price": 29.99, "id": "1" },
+          {
+            "label": "Grande",
+            "price": 37.99,
+            "id": "2",
+            "hasPromotion": true,
+            "oldPrice": 47.99
+          }
+        ]
+      },
+      {
+        "id": "702",
+        "title": "Acompanhamentos",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 2,
+        "options": [
+          { "label": "Legumes", "price": 0, "id": "legumes" },
+          { "label": "Shoyu extra", "price": 1.0, "id": "shoyu_extra" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "productId": "3",
+    "idRestaurant": "2",
+    "imageRestaurant": "/images-restaurants/subway.png",
+    "nameRestaurant": "Subway",
+    "name": "Sanduíche Frango Subway",
+    "image": "/sanduiche-frango.jpg",
+    "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Frango Grelhado",
+    "price": 13.99,
+    "customization": [
+      {
+        "id": "301",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Bacon", "price": 3.0, "id": "add_bacon" },
+          { "label": "Queijo extra", "price": 2.0, "id": "add_queijo" },
+          { "label": "Cebola crispy", "price": 2.5, "id": "add_cebola" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "productId": "3",
+    "idRestaurant": "2",
+    "imageRestaurant": "/images-restaurants/subway.png",
+    "nameRestaurant": "Subway",
+    "name": "Sanduíche Frango Defumado Subway",
+    "image": "/sanduiche-frango.jpg",
+    "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Frango Defumado com Cream Cheese.",
+    "price": 13.99,
+    "customization": [
+      {
+        "id": "302",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Bacon", "price": 3.0, "id": "add_bacon" },
+          { "label": "Queijo extra", "price": 2.0, "id": "add_queijo" },
+          { "label": "Cebola crispy", "price": 2.5, "id": "add_cebola" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "productId": "3",
+    "idRestaurant": "2",
+    "imageRestaurant": "/images-restaurants/subway.png",
+    "nameRestaurant": "Subway",
+    "name": "Sanduíche Steak Churrasco Subway",
+    "image": "/sanduiche-steak-churrasco.jpg",
+    "description": "Monte o seu saboroso sanduíche com pão, vegetais, queijos e molhos à sua escolha, tudo acompanhado pelo irresistível Steak de Churrasco, cheio de suculência e sabor",
+    "price": 13.99,
+    "customization": [
+      {
+        "id": "303",
+        "title": "Adicionais",
+        "type": "multi",
+        "required": false,
+        "min": 0,
+        "max": 3,
+        "options": [
+          { "label": "Bacon", "price": 3.0, "id": "add_bacon" },
+          { "label": "Queijo extra", "price": 2.0, "id": "add_queijo" },
+          { "label": "Cebola crispy", "price": 2.5, "id": "add_cebola" }
         ]
       }
     ]
