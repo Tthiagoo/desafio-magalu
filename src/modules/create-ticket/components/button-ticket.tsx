@@ -17,7 +17,7 @@ export default function ButtonTicket({ productId }: { productId: string }) {
 
   return (
     <Button
-      className="w-64 sm:w-full sm:mt-4"
+      className="w-64 sm:w-full max-w-[620px] sm:mt-4"
       disabled={!hasQuantity}
       onClick={() => {
         if (hasQuantity) {

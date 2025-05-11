@@ -72,6 +72,11 @@ export default function ProductHeader({ infoHeader }: IProps) {
                     : formatMoney(currentPrice!)}
                 </strong>
               </span>
+              {quantity === 0 && (
+                <span className="text-red-600 text-xs mt-1 font-semibold block">
+                  Selecione pelo menos 1 quantidade
+                </span>
+              )}
             </div>
 
             {quantity === 0 ? (
