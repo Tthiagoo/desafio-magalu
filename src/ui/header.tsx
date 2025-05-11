@@ -3,9 +3,16 @@ import * as React from "react";
 import Image from "next/image";
 import { MapPin, ChevronRight, UserIcon } from "lucide-react";
 import { InputSearchRestaurant } from "@/modules/search-restaurants/components/input-search-restaurant";
+import { useRouter, usePathname } from "next/navigation";
 
 export function Header() {
   const [address, setAddress] = React.useState("Pesquisar endereço");
+  const router = useRouter();
+  const pathname = usePathname();
+  const showSearchInput = pathname === "/";
+  const handleClick = () => {
+    router.push("/");
+  };
 
   const handleGetLocation = () => {
     if (!navigator.geolocation) {
@@ -41,7 +48,7 @@ export function Header() {
   return (
     <header className="bg-primary text-accent  flex flex-col items-center justify-between p-4 ">
       <div className="flex items-center justify-between w-full max-w-96 ">
-        <div className="relative w-8 h-8 sm:w-12 sm:h-12">
+        <div className="relative w-8 h-8 sm:w-12 sm:h-12" onClick={handleClick}>
           <Image
             src="/aiqlogo.svg"
             alt="Aiq fome logo"
@@ -66,7 +73,7 @@ export function Header() {
         </div>
         <UserIcon className="sm:scale-125" />
       </div>
-      <InputSearchRestaurant />
+      {showSearchInput && <InputSearchRestaurant />}
     </header>
   );
 }

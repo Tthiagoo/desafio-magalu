@@ -13,7 +13,7 @@ import CartEmpty from "@/modules/cart/components/cart-empty";
 
 export default function Ticket() {
   const items = useCartStore((state) => state.items) as CartItem[];
-  console.log("items", items);
+
   const isEmpty = items.length === 0;
   return (
     <div className="max-w-md mx-auto mt-4  px-2">

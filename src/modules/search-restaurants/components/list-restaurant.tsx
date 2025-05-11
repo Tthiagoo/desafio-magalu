@@ -27,8 +27,7 @@ function ListRestaurantContent({ restaurants }: IProps) {
   const { openRestaurantes, closedRestaurantes } = getByOpenStatus(
     filteredRestaurantsByName
   );
-  console.log(restaurants);
-  console.log(openRestaurantes, closedRestaurantes);
+
   return (
     <>
       <strong className="text-xl sm:text-3xl font-bold text-primary">

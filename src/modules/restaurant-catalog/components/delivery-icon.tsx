@@ -7,14 +7,11 @@ interface DeliveryTypeProps {
 
 export function DeliveryIcon({ type, deliveryPrice }: DeliveryTypeProps) {
   const color = (type: string) => {
-    console.log(type);
     const typeSelected = deliveryType[type as keyof typeof deliveryType];
 
     return typeSelected;
   };
 
-  console.log(type);
-  console.log(color(type));
   return (
     <span className={`flex items-center gap-1 font-bold  ${color(type)}`}>
       <Image

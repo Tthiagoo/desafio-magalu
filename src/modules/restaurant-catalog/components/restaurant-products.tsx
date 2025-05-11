@@ -5,7 +5,6 @@ interface IProps {
   idRestaurant: string;
 }
 export function RestaurantProducts({ products, idRestaurant }: IProps) {
-  console.log(products);
   return (
     <section className="px-4">
       {products.map((product, index) => (

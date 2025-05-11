@@ -24,8 +24,6 @@ export function RestaurantService(
       openRestaurantes: RestaurantEntity[];
       closedRestaurantes: RestaurantEntity[];
     } {
-      console.log("chegou aqui");
-      console.log(restaurants);
       const openRestaurantes = restaurants.filter(
         (restaurant) => restaurant.open == true
       );

@@ -9,7 +9,6 @@ export default function TicketCustomizationItem({
 }: {
   customizations: Record<string, { title: string; value: any }>;
 }) {
-  console.log("[TicketCustomizationItem] render", { customizations });
   return (
     <div className="mt-2 space-y-1">
       {Object.entries(customizations).map(([key, entry]) => {

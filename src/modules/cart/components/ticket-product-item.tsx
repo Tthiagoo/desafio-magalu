@@ -41,7 +41,7 @@ export function TicketProductItem({
       });
     }
   };
-  console.log("[TicketProductItem] render", { product });
+  
   return (
     <div className="border-b border-neutral-200 pb-4 mb-2 last:border-b-0 last:pb-0 last:mb-0">
       <div className="flex items-start gap-3">
