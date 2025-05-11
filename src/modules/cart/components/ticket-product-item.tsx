@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { Pencil, Plus, Minus, Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import TicketCustomizationItem from "./ticket-customization-item";
 import { useCartStore } from "@/modules/create-ticket/store/cart";
@@ -9,6 +10,7 @@ import { formatMoney } from "@/lib/utils";
 export function TicketProductItem({ product, quantity, options }: any) {
   const updateItem = useCartStore((s) => s.updateItem);
   const removeItem = useCartStore((s) => s.removeItem);
+  const router = useRouter();
 
   const handleIncrement = () => {
     const newQuantity = quantity + 1;
@@ -38,7 +40,7 @@ export function TicketProductItem({ product, quantity, options }: any) {
               {product.product.name}
             </span>
             <span className="font-bold text-purple-600 text-lg">
-              R$ {formatMoney(product.product.price)}
+              {formatMoney(product.product.price)}
             </span>
           </div>
           <div className="flex items-center justify-end gap-2 mt-2">
@@ -71,7 +73,14 @@ export function TicketProductItem({ product, quantity, options }: any) {
               >
                 <Plus className="w-4 h-4" />
               </button>
-              <button className="flex items-center gap-1 text-teal-600 font-semibold text-sm hover:underline px-1 ml-2">
+              <button
+                className="flex items-center gap-1 text-teal-600 font-semibold text-sm hover:underline px-1 ml-2"
+                onClick={() => {
+                  router.push(
+                    `/restaurant/${product.product.idRestaurant}/product/${product.product.id}`
+                  );
+                }}
+              >
                 <Pencil className="w-4 h-4" /> editar
               </button>
             </div>

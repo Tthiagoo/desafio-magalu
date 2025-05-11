@@ -1,4 +1,5 @@
 "use client";
+import { formatMoney } from "@/lib/utils";
 import React from "react";
 
 export function TicketSummary({ subtotal }: { subtotal: number }) {
@@ -7,7 +8,7 @@ export function TicketSummary({ subtotal }: { subtotal: number }) {
       <div className="flex justify-between items-center mb-2">
         <span className="text-neutral-600 text-base">subtotal</span>
         <span className="font-bold text-lg text-purple-700">
-          R$ {subtotal.toFixed(2)}
+          {formatMoney(Number(subtotal.toFixed(2)))}
         </span>
       </div>
       <button className="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold rounded-lg py-3 mt-2 transition-colors text-base">
