@@ -4,7 +4,7 @@ import { Label } from "@/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/ui/radio-group";
 import { IProductCustomization } from "../types";
 import React from "react";
-import { useSingleCustomizationV2 } from "../hooks/useCustomizations";
+import { useSingleCustomization } from "../hooks";
 
 interface IProps {
   productId: string;
@@ -12,7 +12,7 @@ interface IProps {
 }
 
 export function SingleCustom({ productId, customization }: IProps) {
-  const { selectedOptionId, handleSelectOption } = useSingleCustomizationV2(
+  const { selectedOptionId, handleSelectOption } = useSingleCustomization(
     productId,
     customization
   );

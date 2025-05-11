@@ -4,7 +4,7 @@ import React from "react";
 import { IProductCustomization } from "../types";
 import { formatMoney } from "@/lib/utils";
 import { QuantityCount } from "./quantity-count";
-import { useQuantityCustomization } from "../hooks/useCustomizations";
+import { useQuantityCustomization } from "../hooks";
 
 interface IProps {
   customization: IProductCustomization;

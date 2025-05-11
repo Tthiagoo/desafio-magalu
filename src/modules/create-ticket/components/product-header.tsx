@@ -6,8 +6,9 @@ import { formatMoney } from "@/lib/utils";
 import { ITicketEntity } from "../domain";
 import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
-import { useProductQuantitySelector } from "../hooks/useCustomizations";
+
 import { useCartStore } from "../store/cart";
+import { useProductQuantitySelector } from "../hooks";
 
 interface IProps {
   infoHeader: ITicketEntity;

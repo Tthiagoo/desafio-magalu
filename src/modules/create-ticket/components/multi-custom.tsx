@@ -4,7 +4,7 @@ import { Checkbox } from "@/ui/checkbox";
 import { Label } from "@/ui/label";
 import React from "react";
 import { IProductCustomization } from "../types";
-import { useMultiCustomization } from "../hooks/useCustomizations";
+import { useMultiCustomization } from "../hooks";
 
 interface IProps {
   productId: string;
