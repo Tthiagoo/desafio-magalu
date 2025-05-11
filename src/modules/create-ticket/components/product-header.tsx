@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import Image from "next/image";
 import { formatMoney } from "@/lib/utils";
 import { ITicketEntity } from "../domain";
@@ -8,24 +8,31 @@ import { Button } from "@/ui/button";
 import { QuantityCount } from "./quantity-count";
 import { useProductQuantitySelector } from "../hooks/useCustomizations";
 import { useCartStore } from "../store/cart";
-import { info } from "console";
 
 interface IProps {
   infoHeader: ITicketEntity;
 }
 
 export default function ProductHeader({ infoHeader }: IProps) {
-  console.log("infoHeader", infoHeader);
-
   const restaurantInfo = {
     name: infoHeader.nameRestaurant,
     image: infoHeader.imageRestaurant,
   };
-  const { quantity, setQuantity, total } = useProductQuantitySelector(
-    infoHeader,
-    restaurantInfo
+
+  const cartItem = useCartStore(
+    useCallback(
+      (s) => s.items.find((item) => item.product.id === infoHeader.id),
+      [infoHeader.id]
+    )
   );
-  console.log(infoHeader.price);
+
+  const currentPrice = cartItem?.product.price ?? infoHeader.price;
+
+  const { quantity, setQuantity, total, increment, decrement } =
+    useProductQuantitySelector(
+      { ...infoHeader, price: currentPrice },
+      restaurantInfo
+    );
   return (
     <>
       <div className="w-full flex justify-center">
@@ -44,7 +51,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
         <div className="mt-1 font-extrabold">
           <span className="text-sm text-neutral-500">a partir de</span>
           <span className="text-lg font-extrabold ml-1 text-purple-500">
-            {formatMoney(infoHeader.price!)}
+            {formatMoney(currentPrice!)}
           </span>
         </div>
         <span className="text-sm text-neutral-500">
@@ -60,8 +67,8 @@ export default function ProductHeader({ infoHeader }: IProps) {
                 Total
                 <strong className="text-md ml-1 text-neutral-700">
                   {quantity > 0
-                    ? formatMoney(infoHeader.price! * quantity)
-                    : formatMoney(infoHeader.price!)}
+                    ? formatMoney(currentPrice! * quantity)
+                    : formatMoney(currentPrice!)}
                 </strong>
               </span>
             </div>
@@ -71,8 +78,8 @@ export default function ProductHeader({ infoHeader }: IProps) {
             ) : (
               <QuantityCount
                 quantity={quantity}
-                onIncrement={() => setQuantity(quantity + 1)}
-                onDecrement={() => setQuantity(quantity - 1)}
+                onIncrement={increment}
+                onDecrement={decrement}
               />
             )}
           </div>

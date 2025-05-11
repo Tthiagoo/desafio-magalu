@@ -25,7 +25,12 @@ function useApplyCustomization() {
     if (!currentItem) return;
     let updatedProduct = { ...currentItem.product };
 
-    if (title.toLowerCase() === "tamanho" && value && value.price) {
+    if (
+      (title.toLowerCase().includes("tamanho") ||
+        title.toLowerCase().includes("size")) &&
+      value &&
+      value.price
+    ) {
       updatedProduct.price = value.price;
     }
     const customizations = {
@@ -216,6 +221,7 @@ export function useQuantityCustomization(
 export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
   const items = useCartStore((s) => s.items);
   const addToCart = useCartStore((s) => s.addToCart);
+  const updateItem = useCartStore((s) => s.updateItem);
   const removeItem = useCartStore((s) => s.removeItem);
   const setInfoRestaurant = useCartStore((s) => s.setInfoRestaurant);
   const [quantity, setQuantity] = useState(0);
@@ -231,6 +237,7 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
 
   const updateCart = useCallback(
     (newQuantity: number) => {
+      const existingItem = items.find((item) => item.product.id === product.id);
       if (newQuantity === 0) {
         setQuantity(0);
         removeItem(product.id);
@@ -240,18 +247,43 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
       if (restaurantInfo) {
         setInfoRestaurant(restaurantInfo);
       }
-      addToCart({
-        product,
-        quantity: newQuantity,
-        customizations: {},
-      });
+      if (existingItem) {
+        updateItem(product.id, {
+          ...existingItem,
+          quantity: newQuantity,
+        });
+      } else {
+        addToCart({
+          product,
+          quantity: newQuantity,
+          customizations: {},
+        });
+      }
     },
-    [addToCart, removeItem, setInfoRestaurant, product, restaurantInfo]
+    [
+      addToCart,
+      updateItem,
+      removeItem,
+      setInfoRestaurant,
+      product,
+      restaurantInfo,
+      items,
+    ]
   );
+
+  const increment = useCallback(() => {
+    updateCart(quantity + 1);
+  }, [quantity, updateCart]);
+
+  const decrement = useCallback(() => {
+    if (quantity > 0) {
+      updateCart(quantity - 1);
+    }
+  }, [quantity, updateCart]);
 
   const total = (quantity * (product.price || 0) || 0)
     .toFixed(2)
     .replace(".", ",");
 
-  return { quantity, setQuantity: updateCart, total };
+  return { quantity, setQuantity: updateCart, total, increment, decrement };
 }
