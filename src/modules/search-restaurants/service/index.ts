@@ -6,7 +6,9 @@ export function RestaurantService(
 ): RestaurantRepository {
   const service: RestaurantRepository = {
     async getAll(): Promise<RestaurantEntity[]> {
-      const response = await fetchFn!(`${base_url}/restaurants`);
+      const response = await fetchFn!(
+        `https://api-magalu-desafio.vercel.app/api/restaurants`
+      );
       return await response.json();
     },
     getByName(

@@ -8,13 +8,13 @@ export function CatalogService(
   const service: RestaurantCatalogRepository = {
     async getCatalogById(id: string): Promise<ProductEntity[]> {
       const response = await fetchFn!(
-        `${base_url}/restaurant-catalog?id=${id}`
+        `https://api-magalu-desafio.vercel.app/api/restaurant-catalog?id=${id}`
       );
       return await response.json();
     },
     async getRestaurantInfo(idRestaurant: string): Promise<RestaurantEntity> {
       const response = await fetchFn!(
-        `${base_url}/restaurant-detail?id=${idRestaurant}`
+        `https://api-magalu-desafio.vercel.app/api/restaurant-detail?id=${idRestaurant}`
       );
       return await response.json();
     },

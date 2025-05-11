@@ -1,4 +1,3 @@
-import { base_url } from "../../../../api";
 import { ITicketRepository, ITicketEntity } from "../domain";
 
 export function serviceTicket(
@@ -8,7 +7,7 @@ export function serviceTicket(
     createTicket() {},
     async getCustomizationByProductId(id: string): Promise<ITicketEntity> {
       const response = await fetchFn!(
-        `${base_url}/productCustomization?id=${id}`
+        `https://api-magalu-desafio.vercel.app/api/productCustomization?id=${id}`
       );
       return await response.json();
     },
