@@ -18,20 +18,20 @@ function useApplyCustomization() {
   return (
     productId: string,
     customizationId: string,
-    value: any,
+    value: unknown,
     title: string
   ) => {
     const currentItem = item.find((i) => i.product.id === productId);
     if (!currentItem) return;
-    let updatedProduct = { ...currentItem.product };
+    const updatedProduct = { ...currentItem.product };
 
     if (
       (title.toLowerCase().includes("tamanho") ||
         title.toLowerCase().includes("size")) &&
       value &&
-      value.price
+      (value as any).price
     ) {
-      updatedProduct.price = value.price;
+      updatedProduct.price = (value as any).price;
     }
     const customizations = {
       ...currentItem.customizations,
@@ -100,6 +100,7 @@ export function useSingleCustomizationV2(
     customization.options,
     customization.title,
     productId,
+    applyCustomization,
   ]);
 
   const handleSelectOption = useCallback(

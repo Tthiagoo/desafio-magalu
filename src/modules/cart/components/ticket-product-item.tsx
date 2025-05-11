@@ -6,8 +6,19 @@ import { useRouter } from "next/navigation";
 import TicketCustomizationItem from "./ticket-customization-item";
 import { useCartStore } from "@/modules/create-ticket/store/cart";
 import { formatMoney } from "@/lib/utils";
+import { CartItem, Product } from "@/modules/create-ticket/types";
 
-export function TicketProductItem({ product, quantity, options }: any) {
+interface TicketProductItemProps {
+  product: CartItem;
+  quantity: number;
+  options?: Record<string, any>;
+}
+
+export function TicketProductItem({
+  product,
+  quantity,
+  options,
+}: TicketProductItemProps) {
   const updateItem = useCartStore((s) => s.updateItem);
   const removeItem = useCartStore((s) => s.removeItem);
   const router = useRouter();
@@ -40,9 +51,18 @@ export function TicketProductItem({ product, quantity, options }: any) {
               {product.product.name}
             </span>
             <span className="font-bold text-purple-600 text-lg">
-              {formatMoney(product.product.price)}
+              {formatMoney(product.product.price || 0)}
             </span>
           </div>
+
+          <TicketCustomizationItem customizations={options || {}} />
+
+          {product.observation && (
+            <div className="mt-2 text-sm bg-neutral-100 text-neutral-500 ">
+              <span className="font-bold">Observação:</span>{" "}
+              {product.observation}
+            </div>
+          )}
           <div className="flex items-center justify-end gap-2 mt-2">
             <div className="flex items-center gap-2 ml-auto">
               {quantity <= 1 ? (
@@ -77,7 +97,7 @@ export function TicketProductItem({ product, quantity, options }: any) {
                 className="flex items-center gap-1 text-teal-600 font-semibold text-sm hover:underline px-1 ml-2"
                 onClick={() => {
                   router.push(
-                    `/restaurant/${product.product.idRestaurant}/product/${product.product.id}`
+                    `/restaurant/${product.product.id}/product/${product.product.id}`
                   );
                 }}
               >
@@ -85,7 +105,6 @@ export function TicketProductItem({ product, quantity, options }: any) {
               </button>
             </div>
           </div>
-          <TicketCustomizationItem customizations={options} />
         </div>
       </div>
     </div>

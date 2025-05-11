@@ -1,7 +1,12 @@
 import React from "react";
-import { formatMoney } from "@/lib/utils";
 
-export function SingleOption({ title, value }: { title: string; value: any }) {
+export function SingleOption({
+  title,
+  value,
+}: {
+  title: string;
+  value: { label: string; quantity?: number };
+}) {
   return (
     <div className="text-sm pl-1 mb-3">
       <div className="font-bold">• {title}</div>

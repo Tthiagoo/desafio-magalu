@@ -1,7 +1,13 @@
 import React from "react";
 import { formatMoney } from "@/lib/utils";
 
-export function MultiOption({ title, value }: { title: string; value: any[] }) {
+export function MultiOption({
+  title,
+  value,
+}: {
+  title: string;
+  value: Array<{ label: string; quantity?: number; price: number }>;
+}) {
   return (
     <div className="text-sm pl-1 mb-3">
       <div className="font-bold">• {title}</div>

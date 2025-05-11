@@ -28,7 +28,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
 
   const currentPrice = cartItem?.product.price ?? infoHeader.price;
 
-  const { quantity, setQuantity, total, increment, decrement } =
+  const { quantity, setQuantity, increment, decrement } =
     useProductQuantitySelector(
       { ...infoHeader, price: currentPrice },
       restaurantInfo

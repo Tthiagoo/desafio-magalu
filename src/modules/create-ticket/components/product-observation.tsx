@@ -10,7 +10,7 @@ interface IProps {
 
 export function Observation({ productId }: IProps) {
   const items = useCartStore((state) => state.items);
-  const updateItemInCart = useCartStore((state) => state.updateItemInCart);
+  const updateItem = useCartStore((state) => state.updateItem);
   const item = items.find((item) => item.product.id === productId);
   const [observation, setObservation] = useState(item?.observation || "");
 
@@ -21,7 +21,7 @@ export function Observation({ productId }: IProps) {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setObservation(e.target.value);
     if (item) {
-      updateItemInCart(productId, {
+      updateItem(productId, {
         ...item,
         observation: e.target.value,
       });

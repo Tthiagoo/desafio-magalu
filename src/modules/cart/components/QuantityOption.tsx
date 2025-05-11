@@ -6,7 +6,7 @@ export function QuantityOption({
   value,
 }: {
   title: string;
-  value: Record<string, any>;
+  value: Record<string, { label?: string; quantity?: number; price?: number }>;
 }) {
   const valuesArr = Object.values(value) as Array<{
     label?: string;
