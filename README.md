@@ -72,8 +72,6 @@ Ele contém apenas a pasta api com os endpoints e arquivos JSON representando os
 
 🔗 Repositório da API mockada: github.com/Tthiagoo/api-magalu-desafio
 
-
-
 ---
 ## 🧠 Estrategias com NextJS
 ### Paginas hibridas
@@ -81,7 +79,30 @@ Ao longo do projeto, procurei aplicar "use client" apenas nos componentes que re
 A ideia é evitar o anti-pattern de transformar tudo em client components, o que acabaria desperdiçando os benefícios de server components, SSR (Server-Side Rendering), e outras otimizações do Next.js.
 ### ISR 
 Outra coisa que achei interessante implementar foi o uso de ISR (Incremental Static Regeneration) na página inicial (home).
-O objetivo é gerar páginas estáticas sob demanda, à medida que os usuários acessam a aplicação — uma estratégia que faz muito sentido em cenários reais com milhares de acessos simultâneos.
+O objetivo é gerar páginas estáticas sob demanda, à medida que os usuários acessam a aplicação — uma estratégia que faz muito sentido em cenários reais com milhares de acessos.
+
+```
+export const revalidate = 60;
+
+export const metadata = {
+  title: "ai q fome - Encontre os melhores restaurantes",
+  description: "Descubra e peça nos melhores restaurantes com o ai q fome!",
+  openGraph: {
+    title: "ai q fome - Encontre os melhores restaurantes",
+    description: "Descubra e peça nos melhores restaurantes com o ai q fome!",
+    images: ["/banner1.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ai q fome - Encontre os melhores restaurantes",
+    description: "Descubra e peça nos melhores restaurantes com o ai q fome!",
+    images: ["/banner1.png"],
+  },
+};
+
+export default async function Home() {
+```
 
 Configurei um revalidate de 1 minuto, partindo da suposição de que o status dos restaurantes não muda com tanta frequência.
 Neste caso, o foco não foi a utilização mais realistica possivel, mas sim demonstrar como o ISR funciona na prática e como ele pode ajudar no desempenho.
@@ -93,18 +114,42 @@ Usando os metadatas do next, eu consig ver uma previa melhor nos links em que vo
 
 
 
-## ⚙️Funcionalidades Extras
+## ⚙️Funcionalidades Extras <br/>
 Algumas funcionalidades adicionais foram implementadas:
 
-🔍 Filtro de busca por restaurante
+🔍 Filtro de busca por restaurante <br/>
 Permite ao usuário digitar e filtrar restaurantes pelo nome em tempo real;
 
-📍 localização do usuario
+📍 localização do usuario <br/>
 Ao clicar no ícone de mapa no cabeçalho, o usuário consegue ver o seu endereço para entrega;
 
-🧠 Metadata com Open Graph e SEO
+🧠 Metadata com Open Graph e SEO <br/>
 Algumas paginas possui metadados configurados com Open Graph (og:title, og:image, etc.), o que melhora a aparência dos links compartilhados e otimiza o SEO da aplicação.
 
-🔗 Botão de compartilhamento (copiar link)
+🔗 Botão de compartilhamento (copiar link) <br/>
 Um botão "Compartilhar" permite copiar o link da página atual para a área de transferência com um clique, facilitando o envio para outras pessoas, ele esta no icone de share na pagina do restaurante
+
+⚠️ Alerta ao escolher restaurante diferente  <br/>
+Um alerta sera exibido se o usuario selecionar um outra restaurante caso ja tenha feito seu ticket
+
+## Como rodar o projeto
+#### ---OBS---
+Caso vc queira rodar a api localmente, basta substituir o endpoint: 
+```
+export const base_url = "https://api-magalu-desafio.vercel.app/api/"; ---> //http://localhost:3000/api/
+```
+Clone o repositório:
+
+git clone https://github.com/Tthiagoo/desafio-magalu.git
+cd desafio-magalu
+Instale as dependências:
+
+pnpm install
+Rode o servidor de desenvolvimento:
+
+pnpm run dev
+Acesse:
+ http://localhost:3000
+
+
 
