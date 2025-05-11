@@ -7,9 +7,9 @@ import React from "react";
 export default async function Restaurant({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = await params;
 
   const { getCatalogById, getRestaurantInfo } = CatalogService(fetch);
 
@@ -29,9 +29,14 @@ export default async function Restaurant({
   );
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const { getRestaurantInfo } = CatalogService(fetch);
-  const restaurantInfo = await getRestaurantInfo(params.id);
+  const restaurantInfo = await getRestaurantInfo(id);
   const title = restaurantInfo?.name;
   const image = restaurantInfo?.image;
 
