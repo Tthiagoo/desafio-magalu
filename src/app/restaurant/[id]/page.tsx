@@ -7,9 +7,9 @@ import React from "react";
 export default async function Restaurant({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
+  const { id } = params;
 
   const { getCatalogById, getRestaurantInfo } = CatalogService(fetch);
 
