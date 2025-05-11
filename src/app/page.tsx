@@ -2,6 +2,8 @@ import ListRestaurant from "@/modules/search-restaurants/components/list-restaur
 import { RestaurantService } from "@/modules/search-restaurants/service";
 import Image from "next/image";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const { getAll } = RestaurantService(fetch);
   const restaurants = await getAll();
