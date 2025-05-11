@@ -7,7 +7,6 @@ import { useCartStore } from "@/modules/create-ticket/store/cart";
 import { formatMoney } from "@/lib/utils";
 
 export function TicketProductItem({ product, quantity, options }: any) {
-  const addToCart = useCartStore((s) => s.addToCart);
   const updateItem = useCartStore((s) => s.updateItem);
   const removeItem = useCartStore((s) => s.removeItem);
 

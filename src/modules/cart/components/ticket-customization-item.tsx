@@ -6,6 +6,7 @@ import { MultiOption } from "./MultiOption";
 import { QuantityOption } from "./QuantityOption";
 
 export default function TicketCustomizationItem({ customizations }: any) {
+  console.log("[TicketCustomizationItem] render", { customizations });
   return (
     <div className="mt-2 space-y-1">
       {Object.entries(customizations).map(([_, entry]: [string, any]) => {
