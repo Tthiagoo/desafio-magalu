@@ -48,18 +48,21 @@ export function Header() {
   return (
     <header className="bg-primary text-accent  flex flex-col items-center justify-between p-4 ">
       <div className="flex items-center justify-between w-full max-w-96 ">
-        <div className="relative w-8 h-8 sm:w-12 sm:h-12" onClick={handleClick}>
+        <div
+          className="cursor-pointer relative w-8 h-8 sm:w-12 sm:h-12"
+          onClick={handleClick}
+        >
           <Image
             src="/aiqlogo.svg"
             alt="Aiq fome logo"
             fill
-            className="object-contain dark:invert"
+            className="object-contain dark:invert md:scale-125"
             priority
           />
         </div>
         <div
-          className="flex w-full flex-row ml-3 mr-5 items-center gap-1 cursor-pointer"
           onClick={handleGetLocation}
+          className="flex w-full flex-row ml-3 mr-5 items-center gap-1 cursor-pointer"
         >
           <MapPin className="cursor-pointer sm:scale-125" />
           <div className="flex flex-col w-full items-start justify-center">
@@ -67,11 +70,11 @@ export function Header() {
             <span
               className={`text-[0.75rem] sm:text-lg w-full font-bold flex flex-row items-center gap-1`}
             >
-              {address} <ChevronRight className="sm:scale-125" />
+              {address} <ChevronRight className="sm:scale-125 md:scale-200" />
             </span>
           </div>
         </div>
-        <UserIcon className="sm:scale-125" />
+        <UserIcon className="sm:scale-125 md:scale-200" />
       </div>
       {showSearchInput && <InputSearchRestaurant />}
     </header>

@@ -22,7 +22,7 @@ export default async function Product({
 
         <ProductCustomization infoProduct={customizationResponse} />
       </div>
-      <div className="px-4 mt-6 mb-12">
+      <div className="px-4 w-full max-w-[600px]  mt-6 mb-12">
         <Observation productId={productId} />
       </div>
       <ButtonTicket productId={productId} />

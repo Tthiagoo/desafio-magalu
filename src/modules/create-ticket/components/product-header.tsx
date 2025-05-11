@@ -41,7 +41,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
     <>
       <div className="w-full flex justify-center">
         <Image
-          className=" sm:rounded-lg"
+          className=" sm:rounded-lg sm:mt-3"
           alt="imagem do prato"
           src={infoHeader.image}
           width={390}
@@ -76,7 +76,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
                 </strong>
               </span>
               {quantity === 0 && (
-                <span className="text-red-600 text-xs mt-1 font-semibold block">
+                <span className="text-red-600 md:text-lg text-xs mt-1 font-semibold block">
                   Selecione pelo menos 1 quantidade
                 </span>
               )}
