@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useMemo, useCallback } from "react";
 import { useCartStore } from "../store/cart";
 
 export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
@@ -7,32 +7,26 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
   const updateItem = useCartStore((s) => s.updateItem);
   const removeItem = useCartStore((s) => s.removeItem);
   const setInfoRestaurant = useCartStore((s) => s.setInfoRestaurant);
-  const [quantity, setQuantity] = useState(0);
 
-  useEffect(() => {
-    const item = items.find((item) => item.product.id === product.id);
-    if (item) {
-      setQuantity(item.quantity);
-    } else {
-      setQuantity(0);
-    }
-  }, [items, product.id]);
+  // Memoize the cart item for this product
+  const cartItem = useMemo(
+    () => items.find((item) => item.product.id === product.id),
+    [items, product.id]
+  );
+  const quantity = cartItem?.quantity || 0;
 
   const updateCart = useCallback(
     (newQuantity: number) => {
-      const existingItem = items.find((item) => item.product.id === product.id);
       if (newQuantity === 0) {
-        setQuantity(0);
         removeItem(product.id);
         return;
       }
-      setQuantity(newQuantity);
       if (restaurantInfo) {
         setInfoRestaurant(restaurantInfo);
       }
-      if (existingItem) {
+      if (cartItem) {
         updateItem(product.id, {
-          ...existingItem,
+          ...cartItem,
           quantity: newQuantity,
         });
       } else {
@@ -50,7 +44,7 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
       setInfoRestaurant,
       product,
       restaurantInfo,
-      items,
+      cartItem,
     ]
   );
 
@@ -68,5 +62,11 @@ export function useProductQuantitySelector(product: any, restaurantInfo?: any) {
     .toFixed(2)
     .replace(".", ",");
 
-  return { quantity, setQuantity: updateCart, total, increment, decrement };
+  return {
+    quantity,
+    setProductQuantity: updateCart,
+    total,
+    increment,
+    decrement,
+  };
 }

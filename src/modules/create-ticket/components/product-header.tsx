@@ -29,7 +29,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
 
   const currentPrice = cartItem?.product.price ?? infoHeader.price;
 
-  const { quantity, setQuantity, increment, decrement } =
+  const { quantity, setProductQuantity, increment, decrement } =
     useProductQuantitySelector(
       { ...infoHeader, price: currentPrice },
       restaurantInfo
@@ -75,7 +75,7 @@ export default function ProductHeader({ infoHeader }: IProps) {
             </div>
 
             {quantity === 0 ? (
-              <Button onClick={() => setQuantity(1)}>adicionar</Button>
+              <Button onClick={() => setProductQuantity(1)}>adicionar</Button>
             ) : (
               <QuantityCount
                 quantity={quantity}
