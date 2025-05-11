@@ -5,7 +5,7 @@ import { MapPin, ChevronRight, UserIcon } from "lucide-react";
 import { InputSearchRestaurant } from "@/modules/search-restaurants/components/input-search-restaurant";
 
 export function Header() {
-  const [address, setAddress] = React.useState("Rua adress, 189");
+  const [address, setAddress] = React.useState("Pesquisar endereço");
 
   const handleGetLocation = () => {
     if (!navigator.geolocation) {
@@ -51,14 +51,14 @@ export function Header() {
           />
         </div>
         <div
-          className="flex flex-row items-center gap-3 cursor-pointer"
+          className="flex w-full flex-row ml-3 mr-5 items-center gap-1 cursor-pointer"
           onClick={handleGetLocation}
         >
           <MapPin className="cursor-pointer sm:scale-125" />
-          <div className="flex flex-col items-start justify-center">
+          <div className="flex flex-col w-full items-start justify-center">
             <span className="text-base sm:text-lg">entregando em</span>
             <span
-              className={`text-base sm:text-lg font-bold flex flex-row items-center gap-1`}
+              className={`text-[0.75rem] sm:text-lg w-full font-bold flex flex-row items-center gap-1`}
             >
               {address} <ChevronRight className="sm:scale-125" />
             </span>
