@@ -28,3 +28,29 @@ export default async function Restaurant({
     </div>
   );
 }
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { getRestaurantInfo } = CatalogService(fetch);
+  const restaurantInfo = await getRestaurantInfo(params.id);
+  const title = restaurantInfo?.name;
+  const image = restaurantInfo?.image;
+
+  const description = `Confira o restaurante ${title} no Magalu!`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [image],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}

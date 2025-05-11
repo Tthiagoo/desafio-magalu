@@ -1,5 +1,6 @@
+"use client";
 import { ChevronRight, Share2 } from "lucide-react";
-import React from "react";
+import React, { useCallback } from "react";
 import { FavoriteButton } from "./favorite-button";
 import Image from "next/image";
 import { RestaurantEntity } from "@/modules/search-restaurants/domain";
@@ -7,6 +8,14 @@ interface IProps {
   info: RestaurantEntity;
 }
 export default function RestaurantHeader({ info }: IProps) {
+  const handleShare = useCallback(() => {
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Link copiado para a área de transferência!");
+      });
+    }
+  }, []);
+
   return (
     <div className="flex flex-col  justify-between gap-3 px-4">
       <div className="flex items-center gap-3">
@@ -23,7 +32,13 @@ export default function RestaurantHeader({ info }: IProps) {
       </div>
       <div className="text-purple-brand flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <Share2 size={25} className="cursor-pointer text-purple-500" />
+          <button
+            onClick={handleShare}
+            title="Copiar link da página"
+            className="flex items-center"
+          >
+            <Share2 size={25} className="cursor-pointer text-purple-500" />
+          </button>
           <FavoriteButton />
         </div>
         <a className="text-teal-500 font-bold flex items-center gap-1">

@@ -4,6 +4,23 @@ import Image from "next/image";
 
 export const revalidate = 60;
 
+export const metadata = {
+  title: "ai q fome - Encontre os melhores restaurantes",
+  description: "Descubra e peça nos melhores restaurantes com o ai q fome!",
+  openGraph: {
+    title: "ai q fome - Encontre os melhores restaurantes",
+    description: "Descubra e peça nos melhores restaurantes com o ai q fome!",
+    images: ["/banner1.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ai q fome - Encontre os melhores restaurantes",
+    description: "Descubra e peça nos melhores restaurantes com o ai q fome!",
+    images: ["/banner1.png"],
+  },
+};
+
 export default async function Home() {
   const { getAll } = RestaurantService(fetch);
   const restaurants = await getAll();
