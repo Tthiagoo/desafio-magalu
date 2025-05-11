@@ -5,7 +5,7 @@ Abaixo eu explico todas as escolher que eu tomei: pastas, bibliotecas, integraç
 
 ## 🌐 Deploy
 
-Acesse o deploy [aqui]([https://seu-link.vercel.app](https://desafio-magalu-one.vercel.app/)).
+Acesse o deploy https://desafio-magalu-one.vercel.app/
 
 ---
 
@@ -32,6 +32,24 @@ A vantagem disso é que conseguimos entender facilmente onde cada coisa está de
 Obs.: Neste projeto, como ele não é muito grande, essa separação modular não seria estritamente necessária. No entanto, escolhi organizá-lo dessa forma para manter tudo mais claro e organizado. É uma abordagem bem simplificada, pensada para não complicar demais o desafio.
 #### Domain
 A pasta domain é onde guardamos a tipagem principal do módulo. O conceito vem do DDD (Domain-Driven Design), onde o software é desenhado por domínio — ou seja, as entidades representam partes "palpáveis" do negócio. <br/>
+
+```
+export interface RestaurantEntity {
+  id: string;
+  name: string;
+  image: string;
+  deliveryFee: number;
+  rating: number;
+  minOrder: number;
+  freeShippingAbove: number;
+  deliveryTime: string;
+  closingHour: string;
+  freeMinimunDelivery: string;
+  distance: string;
+  open: boolean;
+}
+
+```
 
 Em projetos maiores, as regras de negócio são geralmente isoladas e organizadas em torno dessas entidades atrvés de classes. No nosso caso, tratam-se apenas de tipos TypeScript que representam os dados da aplicação.
 #### Repository Type
@@ -67,8 +85,21 @@ Essas são as explicações mais importantes em relação às pastas. O restante
 Algo que achei interessante fazer foi simular uma API como se fosse de um backend real, mas utilizando a api folder do Next.js.
 A intenção é simular chamadas HTTP para poder aproveitar os benefícios do SSR e do sistema de cache do Next, como se estivéssemos lidando com uma API externa.
 
+```
+import { NextResponse } from "next/server";
+import data from "@/db/restaurants.json";
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+  const restaurantFiltered = data.find((restaurant) => restaurant.id === id);
+  return NextResponse.json(restaurantFiltered);
+}
+
+```
+
 Além disso, criei um segundo projeto Next.js separado, hospedado na Vercel, que serve exclusivamente como um mock de backend.
-Ele contém apenas a pasta api com os endpoints e arquivos JSON representando os dados. Esse projeto simula uma API pública e serve de base para os serviços no frontend consumirem os dados via HTTP.
+Ele contém apenas a pasta api com os endpoints e arquivos JSON representando os dados. Esse projeto simula uma API pública e serve de base para os services consumirem os dados via HTTP.
 
 🔗 Repositório da API mockada: github.com/Tthiagoo/api-magalu-desafio
 
@@ -144,11 +175,10 @@ git clone https://github.com/Tthiagoo/desafio-magalu.git
 cd desafio-magalu
 Instale as dependências:
 
-pnpm install
-Rode o servidor de desenvolvimento:
+pnpm install <br/>
 
-pnpm run dev
-Acesse:
+pnpm run dev <br/>
+
  http://localhost:3000
 
 
